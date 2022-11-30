@@ -1,9 +1,16 @@
 # GUI
-
+```console
 sudo systemctl set-default multi-user
-
-gnome-session-quit **Disable GUI**
-
-sudo systemctl start gdm3 **Install Gnome GUI**
-
-sudo systemctl set-default graphical **Enable GUI**
+```
+Disable GUI
+```console
+gnome-session-quit 
+```
+Install Gnome GUI
+```console
+sudo systemctl start gdm3 
+```
+Enable GUI
+```console
+sudo systemctl set-default graphical 
+```

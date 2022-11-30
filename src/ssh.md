@@ -31,8 +31,3 @@ the copy and paste the result in the .ssh/authorized_keys file of the
 new user from which you will use your ssh key to connect.
 
 
-## GitHub ssh key usage
-
-Create a ssh key pair
-
-ssh-keygen -t ed25519 -C <your_email@example.com>

@@ -7,35 +7,31 @@ nc - Netcat is a versatile utility for working with TCP or UDP data.
 ## Processes 
 
 To report a snapshot of the current processes use
-
+```console
 ps -ef
-
+```
 This can tell you what processes are running on your system even if they
 do not use a port
 
 
-### Manage the process
+### Turn off a process
 
-The command kill comes in.
+The command kill comes in. The flag -9 references the signal that we will send to the process, and
+we pass in the process ID within that process group we want to kill. The signals you can send are:
 
-The flag -9 references the signal that we will send to the process, and
-we pass in the process ID within that process group we want to kill.
+    1 — HUP (hang up)
 
-The signals you can send are:
+    2 — INT (interrupt)
 
-1 — HUP (hang up)
+    3 — QUIT (quit)
 
-2 — INT (interrupt)
+    6 — ABRT (abort)
 
-3 — QUIT (quit)
+    9 — KILL (non-catchable, non-ignorable kill)
 
-6 — ABRT (abort)
+    14 — ALRM (alarm clock)
 
-9 — KILL (non-catchable, non-ignorable kill)
-
-14 — ALRM (alarm clock)
-
-15 — TERM (software termination signal)
+    15 — TERM (software termination signal)
 
 
 ## Networking 
@@ -43,7 +39,9 @@ The signals you can send are:
 To see the port and understand if they are listening, it is possible to
 run this command when a programme is running is running.
 
+```console
 sudo ss -lptn
+```
 
 Commonly used piping the grep command
 
