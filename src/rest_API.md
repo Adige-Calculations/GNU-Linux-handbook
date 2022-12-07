@@ -1,6 +1,5 @@
 # rest-API
 
-
 An API can be considered REST when it respects the below constrains.
 
 ### Rest constrains

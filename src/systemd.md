@@ -24,10 +24,11 @@ systemctl cat postgresql
 Usually, the service are deamons and they run at boot and in background,
 systemd is the init system in mostly of the linux distribution and it
 contains the majority of the service your machine will need to run
-properly.
+properly. To check if a service is running:
 
-service \<**serviceName**\> status **check if a service is running**
-
+```console
+service <serviceName> status 
+```
 You can instantiate new service that starts at boot storing the exec in
 
 /etc/init.d
