@@ -1,9 +1,29 @@
 # GUI
 
+Setting the system to be a multiuser as default:
+
+```console
 sudo systemctl set-default multi-user
+```
 
-gnome-session-quit **Disable GUI**
+## GNOME
 
-sudo systemctl start gdm3 **Install Gnome GUI**
+Install the GUI:
+```console 
+sudo systemctl start gdm3 
+```
+Check the verison:
+```
+gnome-shell --version
+```
 
-sudo systemctl set-default graphical **Enable GUI**
+Enable the GUI:
+```console
+sudo systemctl set-default graphical
+```
+
+To disable the GUI:
+
+```console 
+gnome-session-quit 
+```

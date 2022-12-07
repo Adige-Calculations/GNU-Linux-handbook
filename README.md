@@ -1,12 +1,12 @@
 <div align="center">
   <p align="center">
     <a href="https://www.adigecalculations.com/">
-    <img src="src/images/powered_by_adige.svg" alt="Adige OF book logo" >
+    <img src="src/images/powered_by_adige.png" alt="Adige OF book logo" >
   </p>
-  <strong>This book describes the usual practices a medium/advanced GNU/Linux system user takes during its workflows. </strong>
+  <strong>This book describes the usual practices a medium-advanced GNU/Linux user takes during its workflows. </strong>
 
   <h3>
-    <a href="http://openfoam-handbook.adigecalculations.com/">Read the Book</a>
+    <a href="https://gnulinux-handbook.adigecalculations.com">Read the Book</a>
     <span> | </span>
     <a href="https://github.com/Adige-Calculations/GNU-Linux-handbook">Contributing</a>
     <span> | </span>

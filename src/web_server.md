@@ -4,11 +4,15 @@
 
 In debian system is called
 
+```console
 apache
+```
 
 While in fedora systems it is called
 
+```console
 httpd
+```
 
 ## Express 
 
@@ -21,34 +25,135 @@ sudo dnf install nginx
 
 This install a deamon, which is drived by systemd using:
 
+``` console
 systemctl status nginx
-
+```
 Or the following command
-
+``` console
 systemctl start stop restart etc... nginx
-
-You can read how nginx is going to work reading inside the:
-
-/etc/nginx/nginx.conf
+```
+You can read how nginx is going to work reading inside ```/etc/nginx/nginx.conf```
 
 Then prepare you config to serve you site, using a config file to reach
 your website file in:
 
-/etc/nginx/conf.d/\<**configFile**\>.conf
-
+``` console
+vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
+``` 
 Remember to put .conf as extension of the file. Further you need to
 store the directory that must be hosted in /var/…/www
 
 ## Certificates 
 
-The first step is to generate your self-signed certificate. To do this,
-log into your server and issue the following command:
+## Using Let's Encrypt & Nginx
 
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout
-/etc/ssl/private/nginx-selfsigned.key -out
-/etc/ssl/certs/nginx-selfsigned.crt
+The first step to using Let’s Encrypt to obtain an SSL certificate is to install the
+```certbot``` software on your server. You can obtain the certbot-nginx package by typing:
 
-You will be asked a few questions (such as country name, state,
-locality, etc.). The most important answer is the Common Name. For this
-question, answer with the server’s IP Address
-<https://www.techrepublic.com/article/how-to-enable-ssl-on-nginx/>
+``` console
+sudo yum install certbot-nginx
+```
+
+The certbot Let’s Encrypt client is now installed and ready to use.
+
+### Setting up Nginx
+
+Then, start Nginx using systemctl:
+
+``` console
+sudo systemctl start nginx
+```
+
+Certbot can automatically configure SSL for Nginx, but it needs to be able to find the
+correct server block in your config. It does this by looking for a server_name directive
+that matches the domain you’re requesting a certificate for. If you’re starting out with a
+fresh Nginx install, you can update the default config file using vi or your favorite 
+text editor:
+
+``` console
+sudo vi /etc/nginx/nginx.conf
+```
+Find the existing server_name line: /etc/nginx/nginx.conf
+
+``` console
+server_name <yourDomainName>;
+```
+Replace the <yourDomainName> with your domain name, such as:
+
+``` console
+server_name example.com www.example.com;
+```
+Save the file and quit your editor. If you are using vi, enter :x, then y when prompted,
+to save and quit. Verify the syntax of your configuration edits with:
+
+``` console
+sudo nginx -t
+```
+
+If that runs with no errors, reload Nginx to load the new configuration:
+
+``` console
+sudo systemctl reload nginx
+```
+Certbot will now be able to find the correct server block and update it.
+Now we’ll update firewall to allow HTTPS traffic.
+
+### Updating the Firewall
+If you have a firewall enabled, make sure port 80 and 443 are open to incoming traffic.
+If you are not running a firewall, you can skip ahead, otherwise you can open these ports
+by typing:
+
+``` console 
+sudo firewall-cmd --add-service=http
+sudo firewall-cmd --add-service=https
+sudo firewall-cmd --runtime-to-permanent
+```
+
+If an iptables firewall is running, the commands you need to run are highly dependent
+on your current rule set. For an initial rule set, you can add HTTP and HTTPS access 
+by typing:
+
+```console
+sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+```
+
+Now the system is ready to run Certbot and fetch our certificates.
+
+### Obtaining a Certificate
+Certbot provides a variety of ways to obtain SSL certificates, through various plugins.
+The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever
+necessary:
+
+``` console 
+sudo certbot --nginx -d example.com -d www.example.com
+```
+
+This runs certbot with the --nginx plugin, using -d to specify the names we’d like the certificate to be valid for.
+
+If this is your first time running certbot, you will be prompted to enter an email 
+address and agree to the terms of service. After doing so, certbot will communicate
+with the Let’s Encrypt server, then run a challenge to verify that you control the
+domain you’re requesting a certificate for. The configuration will be updated, and
+Nginx will reload to pick up the new settings. certbot will wrap up with a message
+telling you the process was successful and where your certificates are stored:
+Your certificates are downloaded, installed, and loaded. Try reloading your website using https:// and notice your browser’s security indicator. It should represent that the site is properly secured, usually with a green lock icon.
+
+Step 5 — Setting Up Auto Renewal
+Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process. We’ll need to set up a regularly run command to check for expiring certificates and renew them automatically.
+
+To run the renewal check daily, we will use cron, a standard system service for running periodic jobs. We tell cron what to do by opening and editing a file called a crontab.
+
+sudo crontab -e
+Your text editor will open the default crontab which is an empty text file at this point. Paste in the following line, then save and close it:
+
+crontab
+. . .
+15 3 * * * /usr/bin/certbot renew --quiet
+The 15 3 * * * part of this line means “run the following command at 3:15 am, every day”. You may choose any time.
+
+The renew command for Certbot will check all certificates installed on the system and update any that are set to expire in less than thirty days. --quiet tells Certbot not to output information or wait for user input.
+
+cron will now run this command daily. All installed certificates will be automatically renewed and reloaded when they have thirty days or less before they expire.
+
+

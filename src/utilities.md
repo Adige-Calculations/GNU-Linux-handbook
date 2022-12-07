@@ -2,9 +2,13 @@
 
 A list of a useful software for UNIX like environment
 
-## ltdr
+## tldr
 
-This will return a better man page.
+Abbreviation for "Too Long; Didn't Read"; it will return a better man page.
+
+```console 
+tldr <utilityName>
+```
 
 ## curl 
 

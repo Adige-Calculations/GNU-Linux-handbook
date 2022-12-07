@@ -1,5 +1,6 @@
 # Summary
 
+- [Preafce](./preface.md)
 - [Users management](./user_mangement.md)
 - [Directory structure](./directories_struct.md)
 - [Shell scripting](./shell_scripting.md)
@@ -7,7 +8,7 @@
 - [Hardware scan](./hardware_scan.md)
 - [GUI](./GUI.md)
 - [Keyboard settings](./keyboard_setting.md)
-- [Port & Processes](./Port&Processes.md)
+- [Port & Processes](./port_and_processes.md)
 - [ssh](./ssh.md)
 - [HPC](./HPC.md)
 - [Web](./web.md)
