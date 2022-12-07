@@ -7,7 +7,6 @@
 - [Disk management](./disk_management.md)
 - [Hardware scan](./hardware_scan.md)
 - [GUI](./GUI.md)
-- [Keyboard settings](./keyboard_setting.md)
 - [Port & Processes](./port_and_processes.md)
 - [ssh](./ssh.md)
 - [HPC](./HPC.md)
