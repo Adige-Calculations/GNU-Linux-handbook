@@ -1,5 +1,17 @@
 # Web server
 
+## Python library
+
+To start a webserver run the command below:
+
+```sh
+python3 -m http.server
+```
+The "-m" flag stands for module-name, and the environment run this module on the current directory.
+Open a webserver on port 8080. You can then open your browser at http://127.0.0.1:8080/
+
+The webserver is also accessible over the network if the firewall does not interfere.
+
 ## Apache
 
 In debian system is called
