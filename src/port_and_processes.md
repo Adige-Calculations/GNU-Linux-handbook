@@ -8,7 +8,7 @@ nc - Netcat is a versatile utility for working with TCP or UDP data.
 ## Processes 
 
 To report a snapshot of the current processes use
-``` console
+``` sh
 ps -ef
 ```
 This can tell you what processes are running on your system even if they
@@ -20,7 +20,7 @@ do not use a port
 The command kill comes in. To kill all processes which match their full
 command instead of just the process name execute:
 
-```console
+```sh
 pkill -f "command_name"
 ```
 The flag ```-9``` references the signal that we will send to the process, and
@@ -98,3 +98,20 @@ nc -v -z ip_address port
 # Act as proxy and forward data from a local TCP port to the given remote host:
 nc -l local_port | nc hostname remote_port
 ```
+
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("../footers/footer_first_level_depth.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html>

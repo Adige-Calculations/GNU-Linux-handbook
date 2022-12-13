@@ -20,5 +20,3 @@
     - [Version control](./git.md)
     - [Web server](./web_server.md)
     - [Database](./database.md)
-
-
