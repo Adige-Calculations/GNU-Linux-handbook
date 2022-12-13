@@ -34,9 +34,10 @@ Add inside this file:
 yourUsername ALL=(All) NOPASSWD:ALL
 ```
 
-## Users systemm login
+## Monitoring users 
 
-Show who is logged into the machine and what they are doing
+To show who is logged into the system and which process other users lauch:
+
 ```console
 w
 ``` 

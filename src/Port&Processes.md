@@ -22,6 +22,7 @@ Some of the most common utilities to troubleshoot networks are listed below:
 </table>
 
 ## Processes management
+
 To report a snapshot of the current processes use
 
 ```sh
@@ -52,12 +53,13 @@ run this command when a programme is running is running.
 sudo ss -lptn
 ```
 
-Commonly used piping the ```grep``` command
+Commonly used piping the ```grep``` command to it, for filtering purposes.
 ``` sh
 ... | grep <processDescription>
 ```
 From a Windows client side, to see if your machine can reach those
 machines through those port type:
+
 ``` sh
 telnet <ipAddressServer> <portNumber>
 ```
