@@ -1,28 +1,16 @@
 # Web server
 
-## Python library
-
-To start a webserver run the command below:
-
-```sh
-python3 -m http.server
-```
-The "-m" flag stands for module-name, and the environment run this module on the current directory.
-Open a webserver on port 8080. You can then open your browser at http://127.0.0.1:8080/
-
-The webserver is also accessible over the network if the firewall does not interfere.
-
 ## Apache
 
 In debian system is called
 
-```console
+```sh
 apache
 ```
 
 While in fedora systems it is called
 
-```console
+```sh
 httpd
 ```
 
@@ -37,11 +25,11 @@ sudo dnf install nginx
 
 This install a deamon, which is drived by systemd using:
 
-``` console
+``` sh
 systemctl status nginx
 ```
 Or the following command
-``` console
+``` sh
 systemctl start stop restart etc... nginx
 ```
 You can read how nginx is going to work reading inside ```/etc/nginx/nginx.conf```
@@ -49,7 +37,7 @@ You can read how nginx is going to work reading inside ```/etc/nginx/nginx.conf`
 Then prepare you config to serve you site, using a config file to reach
 your website file in:
 
-``` console
+``` sh
 vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
 ``` 
 Remember to put .conf as extension of the file. Further you need to
@@ -62,7 +50,7 @@ store the directory that must be hosted in /var/…/www
 The first step to using Let’s Encrypt to obtain an SSL certificate is to install the
 ```certbot``` software on your server. You can obtain the certbot-nginx package by typing:
 
-``` console
+``` sh
 sudo yum install certbot-nginx
 ```
 
@@ -72,7 +60,7 @@ The certbot Let’s Encrypt client is now installed and ready to use.
 
 Then, start Nginx using systemctl:
 
-``` console
+``` sh
 sudo systemctl start nginx
 ```
 
@@ -82,29 +70,29 @@ that matches the domain you’re requesting a certificate for. If you’re start
 fresh Nginx install, you can update the default config file using vi or your favorite 
 text editor:
 
-``` console
+``` sh
 sudo vi /etc/nginx/nginx.conf
 ```
 Find the existing server_name line: /etc/nginx/nginx.conf
 
-``` console
+``` sh
 server_name <yourDomainName>;
 ```
 Replace the <yourDomainName> with your domain name, such as:
 
-``` console
+``` sh
 server_name example.com www.example.com;
 ```
 Save the file and quit your editor. If you are using vi, enter :x, then y when prompted,
 to save and quit. Verify the syntax of your configuration edits with:
 
-``` console
+``` sh
 sudo nginx -t
 ```
 
 If that runs with no errors, reload Nginx to load the new configuration:
 
-``` console
+``` sh
 sudo systemctl reload nginx
 ```
 Certbot will now be able to find the correct server block and update it.
@@ -115,7 +103,7 @@ If you have a firewall enabled, make sure port 80 and 443 are open to incoming t
 If you are not running a firewall, you can skip ahead, otherwise you can open these ports
 by typing:
 
-``` console 
+``` sh 
 sudo firewall-cmd --add-service=http
 sudo firewall-cmd --add-service=https
 sudo firewall-cmd --runtime-to-permanent
@@ -125,7 +113,7 @@ If an iptables firewall is running, the commands you need to run are highly depe
 on your current rule set. For an initial rule set, you can add HTTP and HTTPS access 
 by typing:
 
-```console
+```sh
 sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 ```
@@ -137,7 +125,7 @@ Certbot provides a variety of ways to obtain SSL certificates, through various p
 The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever
 necessary:
 
-``` console 
+``` sh 
 sudo certbot --nginx -d example.com -d www.example.com
 ```
 

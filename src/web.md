@@ -3,7 +3,7 @@
 The web communication work thanks to a procol implementation: HTML.
 Which stands for Hyper Text Tranfer Protocol.
 
-## Http
+## HTTP
 
 A “Protocol” is a definition of behaviour between entities, in this case
 client and server.

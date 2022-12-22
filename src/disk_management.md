@@ -1,32 +1,35 @@
 # Disk management
 
-To list the file systems and the space present in your machine run:
+An analysis of the disk present in your machine can be done through the ```df``` utility, which
+report all file systems and their disk usage:
 
-```console
-df --human **Report file system disk space usage**
+```sh
+df --human 
 ```
+Instead to estimate and summarize file and directory space usage, run the following:
 
-Report directory disk space usage
-``` console
-du -h 
+``` sh
+du --human 
 ```
-Check which root directory contains more data
+A good example on how to used the ```df``` utility is to check which root directory contains more data:
 
-```console
+```sh
 du -h –max-depth=1 \ | sort -n
 ```
 ## Enlarge the disk volume 
 
-If allocated a new disk
-``` console
+If allocated a new disk, run the following command to list all storage devices in a tree-like format:
+
+``` sh
 lsblk
 ```
+To enlarge a current disk perform the following commands:
+
+``` sh
 sudo growpart /dev/nvme0n1 1
-
 lsblk
-
 sudo xfs_growfs -d /
-
+```
 <!--  Script to show the footer   -->
 <html>
 <script

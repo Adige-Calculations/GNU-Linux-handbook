@@ -8,7 +8,7 @@ Abbreviation for "Too Long; Didn't Read"; it will return a better man page.
 
 Return a better andmore coincise manual page, with suggestion and brief explanation.
 
-```console
+```sh
 ltdr <utilityName>
 ```
 
@@ -17,14 +17,9 @@ ltdr <utilityName>
 Transfers data from or to a server. Supports most protocols, including
 HTTP, FTP, and POP3. For example to test a rest-api:
 
-```console 
+```sh 
 curl https://pokeapi.co/api/v2/pokemon/ \> pokemon_return_rest_api.json
 ```
-
-
-
-
-
 <!--  Script to show the footer   -->
 <html>
 <script

@@ -55,18 +55,18 @@ sudo ss -lptn
 
 Returning this table
 
-```console
+```sh
 State      Recv-Q Send-Q      Local Address:Port       Peer Address:Port
 ```
 
 Commonly used piping the grep command
-```console
+```sh
 ... | grep <processDescriptionOrPort>
 ```
 From a Windows client side, to see if your machine can reach those
 machines through those port type:
 
-```console 
+```sh 
 telnet <ipAddressServer> <portNumber>
 ```
 
@@ -76,7 +76,7 @@ While from a Linux client side you can use the “nc” command. The nc (or
 netcat) utility is used for just about anything under the sun involving
 TCP, UDP, or UNIX-domain sockets. The syntax is:
 
-```console
+```sh
 # Listen on a specified port and print any data received:
 nc -l port
 

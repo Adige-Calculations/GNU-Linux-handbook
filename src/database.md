@@ -1,17 +1,18 @@
 # Database
+A database is a collection of data that is organized in a specific way and stored electronically. Databases are used to store,
+retrieve, and manipulate data efficiently.
 
 ## postgresql
 
 Remember that a database is an executable service, hence it is an
 application that must be installed and executed.
 
-Sudo dnf install postgresql-server
-
-Sudo service postgresql status
-
-Sudo service postgresql start
-
+```sh
+sudo dnf install postgresql-server
+sudo service postgresql status
+sudo service postgresql start
 psql
+```
 
 ### Installation
 
@@ -20,30 +21,31 @@ bit different in comparison to other packages and other Linux distros.
 This document aims to summarize basic installation steps relevant to
 recent Fedora Linux releases.
 
+```sh
 sudo dnf install postgresql-server postgresql-contrib
-
+```
 The postgresql server is not running and disabled by default. To set it
 to start at boot, run:
-
+```sh
 sudo systemctl enable postgresql
-
+```
 The database needs to be populated with initial data after installation.
 The database initialization could be done using following command. It
 creates the configuration files postgresql.conf and pg_hba.conf
-
+```sh
 sudo postgresql-setup --initdb --unit postgresql
-
+```
 To start the postgresql server manually, run
-
+```sh
 sudo systemctl start postgresql
-
+```
 ### User Creation and Database Creation
 
 Now you need to create a user and database for the user. This needs to
 be run from a postgres user account on your system.
-
+```sh
 sudo -u postgres psql
-
+```
 From here you can create a postgres user and database. Here, we will
 assume your computer’s user account is called lenny. Note: you can also
 run this from the shell as well with createuser lenny and createdb

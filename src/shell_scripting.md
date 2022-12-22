@@ -13,7 +13,7 @@ First line to initialize shell script is:
 
 for region in $(foamListRegions solid);
 do
-    <command>;
+    <commands>;
 done
 ```
 <!--  Script to show the footer   -->

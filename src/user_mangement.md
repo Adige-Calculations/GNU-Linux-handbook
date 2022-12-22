@@ -2,17 +2,18 @@
 
 Add users
 
-```console
+```sh
 sudo adduser <username> 
 ```
 
-Give new user administrator privileges
-``` console
+Give new user administrator privileges:
+
+``` sh
 sudo adduser <username> sudo  ## wheel in RHEL based system
 ```
 and then to elude the need to introduce the password each time you need to use super-user privileges, the command ```sudo visudo``` you can see and edit, the sudo configuration:
 
-```console
+```sh
 ...
 
 # User privilege specification
@@ -30,15 +31,14 @@ root    ALL=(ALL:ALL) ALL
 
 Add inside this file:
 
-```console 
+```sh 
 yourUsername ALL=(All) NOPASSWD:ALL
 ```
 
-## Monitoring users 
+## Users systemm login
 
-To show who is logged into the system and which process other users lauch:
-
-```console
+Show who is logged into the machine and what they are doing
+```sh
 w
 ``` 
 <!--  Script to show the footer   -->

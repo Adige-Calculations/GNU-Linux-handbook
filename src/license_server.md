@@ -1,24 +1,13 @@
 # Licence server
 
-Almost every floating licence manager, will use the ```lmgrd``` program.
-To start the licence manager, you need to feed to it the licence file and
-for throubleshooting pourpose, it is advices to output the software outcome on
-a log file.
+Almost evert floating licence, if does not have a proprietary licence
+manger will use lmgrd and the utils that comes with it
 
-```console
+```sh
 ./lmgrd -c <license_file>.lic -l <license>.log
 ```
-Remember to open the port you specify in the licence. An example of licence might look like:
 
-```
-SERVER host-machine-name 0aa******fec 1055 
-VENDOR ansyslmd PORT=53932
-
-...
-...
-```
-The first line of the licence indicate at lmgrd to listen on port 1055 and 53932.
-
+Remember to open the port you specify in the licence.
 <!--  Script to show the footer   -->
 <html>
 <script

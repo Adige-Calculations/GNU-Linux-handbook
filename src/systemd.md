@@ -26,7 +26,7 @@ systemd is the init system in mostly of the linux distribution and it
 contains the majority of the service your machine will need to run
 properly. To check if a service is running:
 
-```console
+```sh
 service <serviceName> status 
 ```
 You can instantiate new service that starts at boot storing the exec in

@@ -1,32 +1,42 @@
-# ssh
+# SSH
 
-The installation comprehends the client and server side, but before
-start install the necessary packages
+SSH (Secure Shell) is a network protocol that allows secure remote login and other secure network services over an unsecured network. It is commonly used to log into servers remotely, transfer files between systems, and execute commands on remote systems.
 
+To use SSH, you will need an SSH client and an SSH server. Before
+any connection take place, install the necessary packages on client:
+
+```sh
 sudo apt install net-tools
+```
 
-If both machines are connected to the Internet on the same router
-through Wi-Fi, then you will not need to create a static IP address.
+## SSH tunnelling
 
-## ssh tunnelling
+SSH tunneling (also known as SSH port forwarding) is a way to create a secure connection between a local computer and a remote server by tunneling through an intermediate server. It allows you to access resources on the remote server as if you were directly connected to it, even if the connection between your local system and the remote server is not directly accessible.
 
-In this forwarding type, Specifies that connections to the given TCP
-port on the remote host (server) are to be forwarded to the local side.
-Your Ip address (local machine) will be the same as the server
+To set up an SSH tunnel, you will need to specify the local and remote port numbers that you want to use for the tunnel, as well as the intermediate server that you want to use as the tunnel. You can then use your SSH client to connect to the intermediate server and create the tunnel.
 
-ssh -R 8002:localhost:8001 <**userName**>@<**ipAddress**>
+```sh
+ssh -R 8002:<ipAddressMachine1>:8001 <userName>@<ipAddressMachine2>
+```
 
-In this particular example if i connect to the sever between port 8002
-and 8001, it is like I am executing in the local machine.
+In this particular example if we connect to the machine 1 between port 8002
+and 8001 of machine 1.
 
 ## Key management
+
+Creta an SSH key:
+
+```sh
+ssh-keygen -t ed25519 -C <your_email@example.com>
+```
 
 If you want to create a public key from a private key (this is usually
 done if you create a new user and you want to connect to it with the
 same key) run the following command with input the private key (.pem)
 
-ssh-keygen -y -f sshKey-eu-west-2-HPC.pem \> key.pub
-
+```sh
+ssh-keygen -y -f sshKey-eu-west-2-HPC.pem > key.pub
+```
 the copy and paste the result in the .ssh/authorized_keys file of the
 new user from which you will use your ssh key to connect.
 

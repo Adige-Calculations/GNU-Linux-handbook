@@ -1,28 +1,31 @@
 # Hardware scan
 
-lscpu **Specs of your CPU**
+Specs of your CPU
+```sh
+lscpu 
+```
+Return the architecture of the CPU
 
-uname -m **Return the architecture of the CPU**
-
+```sh
+uname -m 
+```
 ## Bluetooth peripherical installation
 
 To connect a Bluetooth device, do:
-
+```
 sudo bluetoothctl
+```
+Then: 
 
-Then
-
+```sh
 scan on
-
-Take note of the device you would like to pair
-
+#Take note of the device you would like to pair
 scan off
-
-pair \<**deviceCode**\>
-
+pair <deviceCode>
 exit
+```
 
-# Keyboard settings
+## Keyboard settings
 
 Change keyboard layout in Italian
 

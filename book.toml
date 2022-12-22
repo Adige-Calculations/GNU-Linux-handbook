@@ -1,6 +1,24 @@
 [book]
-authors = ["mSamiolo"]
+authors = ["Mattia Samiolo"]
 language = "en"
 multilingual = false
 src = "src"
 title = "GNU-Linux-handbook"
+
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/Adige-Calculations/GNU-Linux-handbook"
+edit-url-template = "https://github.com/Adige-Calculations/GNU-Linux-handbook/tree/main/{path}"
+
+[output.html.playground]
+editable = true
+line-numbers = true
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2

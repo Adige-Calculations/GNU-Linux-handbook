@@ -1,15 +1,17 @@
 # GUI
 
+A graphical user interface (GUI) is a type of user interface that allows users to interact with a computer or device using visual elements such as icons, buttons, and windows. A GUI makes it easier for users to perform tasks by clicking on buttons or selecting options from menus, rather than having to type commands or navigate a command-line interface.
+
 Setting the system to be a multiuser as default:
 
-```console
+```sh
 sudo systemctl set-default multi-user
 ```
 
 ## GNOME
 
 Install the GUI:
-```console 
+```sh 
 sudo systemctl start gdm3 
 ```
 Check the verison:
@@ -18,13 +20,13 @@ gnome-shell --version
 ```
 
 Enable the GUI:
-```console
+```sh
 sudo systemctl set-default graphical
 ```
 
 To disable the GUI:
 
-```console 
+```sh 
 gnome-session-quit 
 ```
 
