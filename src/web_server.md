@@ -1,51 +1,49 @@
 # Web server
 
-## Apache
+A web server is a computer program that serves web pages to clients on the web.
+When a client, such as a web browser, makes a request to a web server for a web page,
+the web server sends the requested page back to the client.
 
-In debian system is called
-
-```sh
-apache
-```
-
-While in fedora systems it is called
-
-```sh
-httpd
-```
-
-## Express 
+Web servers can be set up on a computer to host a website, and they are often used to
+store and manage the files that make up a website, as well as to process requests from
+clients and serve the appropriate files or data in response. Web servers can be configured
+to handle different types of requests, such as serving static or dynamic pages.
 
 ## Nginx 
 
 Install nginx, which is a web server that serve the http pages given the
 http/https request
 
+```sh
 sudo dnf install nginx
-
-This install a deamon, which is drived by systemd using:
-
-``` sh
-systemctl status nginx
 ```
-Or the following command
+
+This install a deamon, which is driven by systemd service management system; using ```systemctl``` the service
+can be controlled in several different ways:
+
 ``` sh
-systemctl start stop restart etc... nginx
+sudo systemctl <systemctlAction> nginx
 ```
-You can read how nginx is going to work reading inside ```/etc/nginx/nginx.conf```
 
-Then prepare you config to serve you site, using a config file to reach
-your website file in:
+### Nginx settings
+
+You can read how ```nginx``` is going to work reading inside ```/etc/nginx/nginx.conf```
+Then prepare a config file to serve you site, using as a base a config file already present in ``` /etc/nginx/conf.d ```.
+Adding a new .conf file and restarting the service, you should have your website served:
 
 ``` sh
-vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
+sudo vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
+sudo systemctl restart nginx
 ``` 
-Remember to put .conf as extension of the file. Further you need to
-store the directory that must be hosted in /var/…/www
+Remember to put .conf as extension of the file. As a good practice, websites are
+stored in ```/var/html/www````
 
 ## Certificates 
 
-## Using Let's Encrypt & Nginx
+To use a HTTPS protocol the web-server must be able to send off certificates to proof that you
+are the owner of the IP address. 
+
+### Using Let's Encrypt & Nginx
 
 The first step to using Let’s Encrypt to obtain an SSL certificate is to install the
 ```certbot``` software on your server. You can obtain the certbot-nginx package by typing:

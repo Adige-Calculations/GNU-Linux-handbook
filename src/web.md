@@ -17,6 +17,23 @@ An http connection is stateless, which means there is no record of
 previous interaction, if you want to keep the login state you need to
 include your login data at every request (on the Header) from a client
 point of view.
+
+## HTTP Verbs
+There are 4 basic HTTP verbs we use in requests to interact with resources in a REST system
+(architectural style for providing standards between computer systems on the web):
+
+GET — retrieve a specific resource (by id) or a collection of resources
+POST — create a new resource
+PUT — update a specific resource (by id)
+DELETE — remove a specific resource by id
+
+For each HTTP verb, there are expected status codes a server should return upon success:
+
+GET — return 200 (OK)
+POST — return 201 (CREATED)
+PUT — return 200 (OK)
+DELETE — return 204 (NO CONTENT) If the operation fails, return the most specific status code possible corresponding to the problem that was encountered.
+
 <!--  Script to show the footer   -->
 <html>
 <script

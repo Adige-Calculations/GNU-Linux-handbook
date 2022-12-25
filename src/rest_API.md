@@ -7,7 +7,6 @@ identified by a unique URL, and the API defines the operations that can be perfo
 
 An API can be considered REST when it respects the below constrains.
 
-
 - Statelessness: REST APIs are stateless, which means that they do not store client state in the server. This allows the API to be more scalable, because it does not need to maintain a session state for each client. 
 - Cacheability: REST APIs are designed to be cacheable, which means that they can be stored in a cache and reused to reduce network traffic and improve performance. 
 - Layered system: REST APIs can be used by multiple clients and servers, and they can be layered on top of each other to create a distributed system. 

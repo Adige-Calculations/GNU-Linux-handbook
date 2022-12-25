@@ -1,43 +1,62 @@
-# Init system 
-
+# Init system
 For sake of simplicity, we will look only at Systemd.
 
 ## systemd
+Systemd is a system/service manager and initialization tool.
+Responsible for starting and managing system services, often for a user the interface with systemd
+is the sevice management system via the ```systemctl``` utility.
 
-Systemd is a system manager and initialization tool. You can see a list
-of all services using the command below
+### systemctl
+Is a command-line utility that is used to control the system service manager (responsible 
+for starting, stopping, and managing system services). systemctl can be used to start, stop, restart,
+enable, or disable services, as well as to check the status of services and view log files.
 
-systemctl list-units --type=service
+Here are some examples of common systemctl commands:
 
-You may have noticed that the system services end with .service
+```sh
+systemctl start <service> 	# start a service
+systemctl stop <service> 	# stop a service
+systemctl restart <service> # restart a service
+systemctl enable <service>  # enable a service to start automatically at boot
+systemctl disable <service> # disable a service from starting automatically at boot
+systemctl status <service>  # check the status of a service
+systemctl list-units --type=service    # list all available services
+systemctl cat <service>     #view the configuration file for a service
+```
+
+It is commonly used in conjunction with other system management tools, such as systemd.
+
+
+You may have noticed that the system services end with ```.service```
 extension, these are nothing but files that are used to define a service
-in systemd . systemctl is smart enough to understand that you’re looking
+in systemd. ```systemctl``` is smart enough to understand that you’re looking
 for a service and correctly display the status, however, you can add in
 the .service extension as a good practice.
 
-You can view the contents of the service file like this,
+For example, you can view the contents of the service file like this:
+```sh
+systemctl cat postgresql.service
+```
 
-systemctl cat postgresql
-
-### Services (deamon)
-
-Usually, the service are deamons and they run at boot and in background,
-systemd is the init system in mostly of the linux distribution and it
-contains the majority of the service your machine will need to run
-properly. To check if a service is running:
+### Services (Deamon)
+Usually, the service are deamons and they run at boot and keep running in background,
+```systemd``` is the init system in mostly of the GNU/Linux distributions and it
+contains the majority of the service your machine will need to run properly. To check
+if a service is running:
 
 ```sh
 service <serviceName> status 
 ```
-You can instantiate new service that starts at boot storing the exec in
+You can instantiate a new service to start at boot, storing the executable in
 
+```sh
 /etc/init.d
-
-And then
-
-chkconfig –add \<exec>
-
-chkconfig \<exec> on
+```
+And then:
+```sh
+chkconfig –add <executable>
+chkconfig <exec> on
+```
 
 <!--  Script to show the footer   -->
 <html>

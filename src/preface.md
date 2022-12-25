@@ -3,16 +3,11 @@
 # Preface
 -----------------------------------------------------------
 
-This handbook contains documentation on using GNU/Linux systems, common workflows, how
-to get started and more as you dive deeper. It acts as a guide for doing some really
-neat things. However, keep in mind it should be seen as a co-pilot for your workflow,
-instead of a place to study on.
-
-This handbook is intended to support a medium-advanced GNU/linux® user
-during the usage of the software. It provides commands, explanations,
-and extension that we find useful during our workflow here in Adige, and it is
-designed to be used via keywords search. This allows you to enrich or
-resolve a problem in the shortest possible time.
+This handbook contains documentation on using GNU/linux® systems, common workflows, and more as you dive deeper.
+It is intended to support a medium-advanced  GNU/linux® user during the usage of the software.
+It acts as a guide for doing some really neat things. However, keep in mind it should be
+seen as a co-pilot for your workflow, instead of a place to study on, it is designed to be
+used via keywords search.
 
 --------------------------------------------------------------
 

@@ -35,7 +35,7 @@ Add inside this file:
 yourUsername ALL=(All) NOPASSWD:ALL
 ```
 
-## Users systemm login
+## Users system login
 
 Show who is logged into the machine and what they are doing
 ```sh
