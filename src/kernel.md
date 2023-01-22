@@ -1,6 +1,6 @@
 ## Find the current kernel version
 
-uname prints information about the machine and operating system it is run on:
+The ```uname``` utility print information about the machine and operating system is running:
 
 ```sh
 uname -r      # -r stands for --kernel-release

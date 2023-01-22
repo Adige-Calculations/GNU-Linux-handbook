@@ -12,7 +12,7 @@ If you already have a git server, configure the git client running:
 ```sh
 git config --global user.email "<yourEmail>"
 # Otherwise you can configure the account with your usernam 
-git config --global user.name "<yourName**\>"
+git config --global user.name "<yourName>"
 ```
 ### Get a repository from server 
 
@@ -44,13 +44,14 @@ git add . && git commit -m "initial commit"
 
 Look at the local branches in your repository:
 
+```sh
 git branch
-
+```
 To see all other branches hiding in your repository and you can use the
 -a flag:
-
+```sh
 git branch --all
-
+```
 If you just want to take a quick peek at an upstream branch, you can use
 a 'detached HEAD' state. You can look around, make experimental changes
 and commit them, and you can discard any commits you make in this state
@@ -85,17 +86,14 @@ git stash pop
 
 ### Add code
 Add some code and then do a commit into the base level of the
-repository:
-
-
-Stages all changes
+repository. Stages all changes:
 
 ```sh
 git add -A  
 ```
 Stages new files and modifications, without deletions (on the current directory and its subdirectories).
 
-```sh`
+```sh
 git add . 
 ```
 Stages modifications and deletions, without new files
@@ -103,9 +101,6 @@ Stages modifications and deletions, without new files
 ```sh
 git add -u 
 ```
-Get again the status of the local repository
-
-git status
 
 ### Merge 
 
@@ -118,23 +113,20 @@ To merge the dev-branch modification into main
 
 ### Commit 
 
-Now it is time to commit those modification
+Commit everything with:
 
-git commit -a
-
-or juts commit everything with:
-
+```sh
 git commit -m “comment”
-
+```
 A commit file will appear where you need to make visible the changes you
 want to commission.
 
 ### Push
 
 Then push the directory to add the files on the online repository:
-
+```sh
 git push
-
+```
 if your branch is new, set a seed in the remote branch to upload the new
 files:
 
@@ -152,10 +144,10 @@ git push -d <remote_name> <branch_name>
 
 Remove a local branch:
 
-```
+```sh
 git branch -d <branchname>
 ```
-## GitHub
+## GitHub SSH keys
 
 To acceed in Github using the SSH protocol, you need to make aware the platform of 
 your public SSH key, which you can generate with:

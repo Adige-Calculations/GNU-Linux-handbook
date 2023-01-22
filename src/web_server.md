@@ -9,6 +9,16 @@ store and manage the files that make up a website, as well as to process request
 clients and serve the appropriate files or data in response. Web servers can be configured
 to handle different types of requests, such as serving static or dynamic pages.
 
+## Python web server
+
+Using the ```http.server``` module, running the following command in a terminal:
+
+```sh
+python -m http.server
+```
+This will start the HTTP server on your local machine and listen for incoming requests 
+on port 8000.
+
 ## Nginx 
 
 Install nginx, which is a web server that serve the http pages given the
@@ -36,14 +46,67 @@ sudo vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
 sudo systemctl restart nginx
 ``` 
 Remember to put .conf as extension of the file. As a good practice, websites are
-stored in ```/var/html/www````
+stored in ```/var/www/html```
 
-## Certificates 
+As an example of a config file:
+
+```sh
+server {
+    server_name    openfoam-handbook.adigecalculations.com www.openfoam-handbook.adigecalculations.com;
+    root           /var/www/html/OpenFOAM-handbook/book;
+    index          index.html;
+    proxy_set_header Host      $host;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = openfoam-handbook.adigecalculations.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen         80;
+    listen         [::]:80;
+    server_name    openfoam-handbook.adigecalculations.com www.openfoam-handbook.adigecalculations.com;
+    return 404; # managed by Certbot
+}
+```
+Next, an example on how to insert reverse proxy to an internal working webserver:
+
+```sh
+server {
+    server_name    openfoam-handbook.adigecalculations.com www.openfoam-handbook.adigecalculations.com;
+    root           /var/www/html/OpenFOAM-handbook/book;
+    location / {
+      proxy_pass http://127.0.0.1:8000;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+...
+```
+
+# Certificates 
 
 To use a HTTPS protocol the web-server must be able to send off certificates to proof that you
 are the owner of the IP address. 
 
-### Using Let's Encrypt & Nginx
+## Using Let's Encrypt & Nginx
 
 The first step to using Let’s Encrypt to obtain an SSL certificate is to install the
 ```certbot``` software on your server. You can obtain the certbot-nginx package by typing:
@@ -118,7 +181,7 @@ sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 
 Now the system is ready to run Certbot and fetch our certificates.
 
-### Obtaining a Certificate
+## Obtaining a Certificate
 Certbot provides a variety of ways to obtain SSL certificates, through various plugins.
 The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever
 necessary:

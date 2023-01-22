@@ -1,7 +1,7 @@
 # Summary
 
 - [Preface](./preface.md)
-- [Users management](./user_mangement.md)
+- [User management](./user_mangement.md)
 - [Directory structure](./directories_struct.md)
 - [Shell scripting](./shell_scripting.md)
 - [Disk management](./disk_management.md)
@@ -14,7 +14,7 @@
 - [HPC](./HPC.md)
 - [Web](./web.md)
     - [REST-API](./rest_API.md)
-- [Deamons/Services & Init](./systemd.md)
+- [Services & Init](./systemd.md)
 - [Dynamic libraries](./dynamic_library.md)
 - [Licence server](./license_server.md)
 - [Utilities](./utilities.md) 

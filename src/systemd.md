@@ -1,15 +1,16 @@
-# Init system
-For sake of simplicity, we will look only at Systemd.
+# Services & Init system
+System will be covered, which is the init programme present in the majority
+of the system out there.
 
 ## systemd
 Systemd is a system/service manager and initialization tool.
-Responsible for starting and managing system services, often for a user the interface with systemd
+Responsible for starting and managing system services. Often for a user, the interface
 is the sevice management system via the ```systemctl``` utility.
 
 ### systemctl
-Is a command-line utility that is used to control the system service manager (responsible 
+Is a command-line utility used to control the system service manager (responsible 
 for starting, stopping, and managing system services). systemctl can be used to start, stop, restart,
-enable, or disable services, as well as to check the status of services and view log files.
+enable, or disable services, as well as view the status and log files of those.
 
 Here are some examples of common systemctl commands:
 
@@ -24,9 +25,6 @@ systemctl list-units --type=service    # list all available services
 systemctl cat <service>     #view the configuration file for a service
 ```
 
-It is commonly used in conjunction with other system management tools, such as systemd.
-
-
 You may have noticed that the system services end with ```.service```
 extension, these are nothing but files that are used to define a service
 in systemd. ```systemctl``` is smart enough to understand that you’re looking
@@ -38,21 +36,24 @@ For example, you can view the contents of the service file like this:
 systemctl cat postgresql.service
 ```
 
-### Services (Deamon)
-Usually, the service are deamons and they run at boot and keep running in background,
-```systemd``` is the init system in mostly of the GNU/Linux distributions and it
-contains the majority of the service your machine will need to run properly. To check
-if a service is running:
+To restart systemd to be sure that all deamons are laoded:
 
 ```sh
-service <serviceName> status 
+systemctl deamon-reload
+systemctl restart <service>.service
 ```
+
+### Services (pr Deamons)
+
+Usually, services run at boot and keep running in background,
+```systemd``` is the init system in mostly of the GNU/Linux distributions and it
+contains the majority of the service your machine will need to run properly.
 You can instantiate a new service to start at boot, storing the executable in
 
 ```sh
 /etc/init.d
 ```
-And then:
+And then running the following:
 ```sh
 chkconfig –add <executable>
 chkconfig <exec> on

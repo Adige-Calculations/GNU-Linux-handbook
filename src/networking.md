@@ -21,28 +21,27 @@ to troubleshoot the problem. These commands allow you to test the connectivity a
 
 
 ## Private IP Address
-192.168.0.0 is the beginning of the private IP address range that includes all IP addresses through 192.168.255.255.
-This IP address is usually not used on a network, and a phone or computer wouldn't be assigned this address. However,
-some networks that include 192.168.0.0 but do not start with this address could use it without problems for a device.
+```192.168.0.0``` is the beginning of the private IP address range (that includes all IP addresses through ```192.168.255.255```).
 
-One common IP address assigned to home routers is 192.168.1.1 (An address like 192.168.0.0 becomes unusable for any 
-other purpose after it's established as a network number. If an administrator assigns 192.168.0.0 to any device on 
-the network as a static IP address, the network stops functioning until that device is taken offline.). This IP address 
-is used because the router is on the 192.168.1.0 network. In the same way, routers on the 192.168.0.0 network are usually
-assigned the local, private IP address of 192.168.0.1.
+
+One common IP address assigned to home routers is 192.168.1.1. This IP address is used because the router is on the
+192.168.1.0 network. In the same way, routers on the 192.168.0.0 network are usually assigned the local, private IP address of 192.168.0.1.
 
 To find out your private IP address, run:
 
 ```sh
 ip route get 1.1.1.1 | awk '{print $7}'
 ```
-
 If you are interested into visualize the private IP addresses of your network run:
 
 ```sh
 nmap -sP 192.168.1.0/24 
 nmap -sT -O 192.168.1.0/24  # Return also the OS of the system 
 ```
+
+> An address like 192.168.0.0 becomes unusable for any 
+other purpose after it's established as a network number. If an administrator assigns 192.168.0.0 to any device on 
+the network as a static IP address, the network stops functioning until that device is taken offline.
 
 ## Public IP address
 
@@ -56,6 +55,7 @@ You can find out your public IP address by using:
 ```ssh
 curl ifconfig.co
 ```
-Keep in mind that your public IP address can change over time, especially if you have a dynamic IP address assignment from
-your ISP. If you have a dynamic IP address, it may change every time you connect to the Internet or after a certain period of 
-time. If you have a static IP address, it will remain the same unless you change it manually or through your ISP.
+The public IP address can change over time, especially if you have a dynamic IP address assignment from
+your Internet Service Provider (ISP). If you have a dynamic IP address, it may change every time you connect
+to the Internet or after a certain period of time. If you have a static IP address, it will remain the same 
+unless you change it manually or through your ISP.

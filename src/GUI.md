@@ -30,6 +30,14 @@ To disable the GUI:
 gnome-session-quit 
 ```
 
+## Display protocol
+
+To check which display protocol you are running, run:
+
+```sh
+echo $XDG_SESSION_TYPE
+```
+
 <!--  Script to show the footer   -->
 <html>
 <script

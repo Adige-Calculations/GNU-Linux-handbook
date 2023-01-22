@@ -74,29 +74,33 @@ psql my_project
 
 ### Initial Configuration
 
-The postgresql server is using two main configuration files
+The postgresql server is using two main configuration files:
 
-```/var/lib/pgsql/data/postgresql.conf```
-```/var/lib/pgsql/data/pg_hba.conf```
+```postgresql.conf```
+```pg_hba.conf```
+
+They can be located diffently depending on version or system configuration, hence find it with:
+
+```sh
+sudo find / -name postgresql.conf   
+sudo find / -name pg_hba.conf
+# Or you can
+sudo -u postgres psql
+SHOW hba_file;
+```
 
 The majority of the initial connections error comes from a missed settings 
-on these two file, since by deafult it accept only local connections and from
-a pre-determined set of addresses. 
+on these two files, since by deafult it accept only local connections.
 
+For example editing ```postgresql.conf``` you can accept all network connections, changing:
+```listen_addresses = 'localhost'``` into ```listen_addresses = '\*'```
 
-For example editing:
+For example editing ```pg_hba.conf```, changing ```host all 127.0.0.1/32 ident``` to
 ```sh
-sudo vim /var/lib/pgsql/data/postgresql.conf
+host    all             all              0.0.0.0/0                       md5
+host    all             all              ::/0                            md5
 ```
-If you want postgres to accept network connections, you should change
-```listen_addresses = 'localhost'``` to ```listen_addresses = '\*'```
-
-For example editing: 
-```sh
-sudo vim /var/lib/pgsql/data/pg_hba.conf
-```
-with ```host all 127.0.0.1/32 ident``` to ```host all 127.0.0.1/32 md5```,
-should allow most applications to connect with username/password.
+you are allowong the world to connect with username/password.
 
 ## Other configurations
 Once your database is set up, you need to configure access to your
