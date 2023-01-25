@@ -71,13 +71,18 @@ git checkout <branchName>
 
 ## Modify the repository branch 
 
-Get the status of the local repository to see which file changed and which has not:
+First, always check the status of the local repository to see which file changed and which has not:
 
 ``` sh
 git status
 ```
 
-To not consider the changes made since the last commit, you can stash your changes and if needed retieve those in the future:
+To not consider the changes made since the last commit, you can stash your changes with:
+
+```sh 
+git stash
+```
+However if the data are needed in the future, you can recover the last stashed with:
 
 ```sh
 # Only the last stashed modifications 
@@ -102,18 +107,18 @@ Stages modifications and deletions, without new files
 git add -u 
 ```
 
-### Merge 
+### Merge branches
 
-If you are in main, run:
+If you are in the ```main``` branch, run:
 
 ```sh
 git merge <dev-branch-name>
 ```
 To merge the dev-branch modification into main
 
-### Commit 
+### Commit code
 
-Commit everything with:
+After having added new file/modifications into the git queue. You can commit these with:
 
 ```sh
 git commit -m “comment”
@@ -134,19 +139,25 @@ files:
 git push --set-upstream origin <branchName>
 ```
 
-### Remove remote branch
+### Manage branches
 
-Remove a remote branch
-```sh
-git push -d <remote_name> <branch_name>
-```
-**remote_name** usually is: **origin**
-
-Remove a local branch:
+To create a new branch, execute the following:
 
 ```sh
-git branch -d <branchname>
+git branch <newBranch>
 ```
+
+Remove a branch run one of these two command:
+
+```sh
+# Remote branch
+git push -d <remoteBranchName> <branch_name>
+# Local branch
+git branch -d <localBranchName>
+```
+
+the **remote_name** usually is: **origin**
+
 ## GitHub SSH keys
 
 To acceed in Github using the SSH protocol, you need to make aware the platform of 

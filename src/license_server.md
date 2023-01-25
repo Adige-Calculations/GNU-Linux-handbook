@@ -7,7 +7,7 @@ manger will use lmgrd and the utils that comes with it
 ./lmgrd -c <license_file>.lic -l <license>.log
 ```
 
-Remember to open the port you specify in the licence.
+Remember to open the port you specify in the licence file.
 <!--  Script to show the footer   -->
 <html>
 <script

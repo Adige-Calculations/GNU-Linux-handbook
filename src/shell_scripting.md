@@ -6,7 +6,47 @@ First line to initialize shell script is:
 #!/bin/bash
 ```
 
-## for cycle 
+## Variables
+
+```sh
+name="John"
+echo $name  # see below
+echo "$name"
+echo "${name}!"
+```
+
+Generally quote your variables unless they contain wildcards to expand or command fragments.
+
+``` sh
+wildcard="*.txt"
+option="iv"
+cp -$options $wildcard /tmp
+```
+
+## String quotes
+``` sh
+name="John"
+echo "Hi $name"  #=> Hi John
+echo 'Hi $name'  #=> Hi $name
+```
+
+## Conditional execution
+
+```sh
+git commit && git push
+git commit || echo "Commit failed"
+```
+
+## Functions
+
+```sh
+get_name() {
+  echo "John"
+}
+
+echo "You are $(get_name)"
+```
+# Cycles
 
 ```bash
 #!/bin/bash
