@@ -106,7 +106,7 @@ server {
 To use a HTTPS protocol the web-server must be able to send off certificates to proof that you
 are the owner of the IP address. 
 
-## Using Let's Encrypt & Nginx
+## Installing certificate autority client with Nginx feautures
 
 The first step to using Let’s Encrypt to obtain an SSL certificate is to install the
 ```certbot``` software on your server. You can obtain the certbot-nginx package by typing:
@@ -115,51 +115,34 @@ The first step to using Let’s Encrypt to obtain an SSL certificate is to insta
 sudo yum install certbot-nginx
 ```
 
-The certbot Let’s Encrypt client is now installed and ready to use.
+The certbot client is now installed and ready to use.
 
-### Setting up Nginx
+### Set/Grub Nginx addresses
 
-Then, start Nginx using systemctl:
+Using a client to communicat with ```Let's Encrypt``` (a certificate authority) called certbox, 
+it is possible to  automatically configure SSL for Nginx. It does this by looking for the
+```server_name``` directive that matches the domain you’re requesting a certificate for.
 
-``` sh
-sudo systemctl start nginx
-```
-
-Certbot can automatically configure SSL for Nginx, but it needs to be able to find the
-correct server block in your config. It does this by looking for a server_name directive
-that matches the domain you’re requesting a certificate for. If you’re starting out with a
-fresh Nginx install, you can update the default config file using vi or your favorite 
-text editor:
+Find the existing server_name line in ```/etc/nginx/nginx.conf``` such as:
 
 ``` sh
-sudo vi /etc/nginx/nginx.conf
+server_name adigecalculations.com www.adigecalculations.com;
 ```
-Find the existing server_name line: /etc/nginx/nginx.conf
-
-``` sh
-server_name <yourDomainName>;
-```
-Replace the <yourDomainName> with your domain name, such as:
-
-``` sh
-server_name example.com www.example.com;
-```
-Save the file and quit your editor. If you are using vi, enter :x, then y when prompted,
-to save and quit. Verify the syntax of your configuration edits with:
+Verify the syntax of your configuration edits with:
 
 ``` sh
 sudo nginx -t
 ```
-
 If that runs with no errors, reload Nginx to load the new configuration:
 
 ``` sh
 sudo systemctl reload nginx
 ```
 Certbot will now be able to find the correct server block and update it.
-Now we’ll update firewall to allow HTTPS traffic.
+Then a firewall update allows HTTPS traffic.
 
 ### Updating the Firewall
+
 If you have a firewall enabled, make sure port 80 and 443 are open to incoming traffic.
 If you are not running a firewall, you can skip ahead, otherwise you can open these ports
 by typing:
@@ -181,7 +164,8 @@ sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 
 Now the system is ready to run Certbot and fetch our certificates.
 
-## Obtaining a Certificate
+## Obtaining a certificate
+
 Certbot provides a variety of ways to obtain SSL certificates, through various plugins.
 The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever
 necessary:
@@ -197,25 +181,34 @@ address and agree to the terms of service. After doing so, certbot will communic
 with the Let’s Encrypt server, then run a challenge to verify that you control the
 domain you’re requesting a certificate for. The configuration will be updated, and
 Nginx will reload to pick up the new settings. certbot will wrap up with a message
-telling you the process was successful and where your certificates are stored:
-Your certificates are downloaded, installed, and loaded. Try reloading your website using https:// and notice your browser’s security indicator. It should represent that the site is properly secured, usually with a green lock icon.
+telling you the process was successful and where your certificates are stored.
+Your certificates are downloaded, installed, and loaded.
 
-Step 5 — Setting Up Auto Renewal
-Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process. We’ll need to set up a regularly run command to check for expiring certificates and renew them automatically.
+### Setting Up Auto Renewal
+Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage 
+users to automate their certificate renewal process. We’ll need to set up a regularly
+run command to check for expiring certificates and renew them automatically.
 
-To run the renewal check daily, we will use cron, a standard system service for running periodic jobs. We tell cron what to do by opening and editing a file called a crontab.
+To run the renewal-check daily, we will use cron, a standard system service for running
+periodic jobs. We tell cron what to do by opening and editing a file called a crontab.
 
+```sh
 sudo crontab -e
-Your text editor will open the default crontab which is an empty text file at this point. Paste in the following line, then save and close it:
+```
+The default ```crontab``` config file will open. Paste in the following line:
 
-crontab
-. . .
+```sh
 15 3 * * * /usr/bin/certbot renew --quiet
-The 15 3 * * * part of this line means “run the following command at 3:15 am, every day”. You may choose any time.
+```
 
-The renew command for Certbot will check all certificates installed on the system and update any that are set to expire in less than thirty days. --quiet tells Certbot not to output information or wait for user input.
+The 15 3 * * * part of this line means “run the following command at 3:15 am, every day”.
 
-cron will now run this command daily. All installed certificates will be automatically renewed and reloaded when they have thirty days or less before they expire.
+The renew command for ```certbot``` will check all certificates installed on the system
+and update any that are set to expire in less than thirty days. --quiet tells Certbot not
+to output information or wait for user input.
+
+
+All installed certificates will be automatically renewed and reloaded when they have thirty days or less before they expire.
 
 
 
@@ -228,7 +221,7 @@ cron will now run this command daily. All installed certificates will be automat
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../../footers/footer_first_level_depth.html");
 });
 </script>
 <body>

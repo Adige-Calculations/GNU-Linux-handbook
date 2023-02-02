@@ -1,6 +1,7 @@
 # Hardware scan
 
 Specs of your CPU
+
 ```sh
 lscpu 
 ```

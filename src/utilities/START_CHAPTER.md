@@ -29,7 +29,7 @@ curl https://pokeapi.co/api/v2/pokemon/ \> pokemon_return_rest_api.json
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../../footers/footer_first_level_depth.html");
 });
 </script>
 <body>

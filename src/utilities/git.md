@@ -175,7 +175,7 @@ ssh-keygen -t ed25519 -C <your_email@example.com>
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../../footers/footer_first_level_depth.html");
 });
 </script>
 <body>

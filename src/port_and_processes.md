@@ -1,6 +1,5 @@
 # Port & Processes
 
-
 The main utilities are shown below:
 
 ```ss``` - Utility to investigate sockets.  
@@ -28,7 +27,7 @@ it is a utulity to investigate sockets:
 sudo ss -lptn
 ```
 
-Returning this table
+Returning this table header:
 
 ```sh
 State      Recv-Q Send-Q      Local Address:Port       Peer Address:Port

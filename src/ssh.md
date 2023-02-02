@@ -6,7 +6,21 @@ To use SSH, you will need an SSH client and an SSH server. Before
 any connection take place, install the necessary packages on client:
 
 ```sh
-sudo apt install net-tools
+sudo apt install openssh-server net-tools
+```
+
+## SSH config file
+
+You can find the configuration options at ```sudo vim /etc/ssh/sshd_config```. An option that should always be consider looking is:
+
+``` sh
+port 22 
+```
+
+Then ensure the deamon is running with these configurations:
+
+```sh
+service ssh start
 ```
 
 ## SSH tunnelling

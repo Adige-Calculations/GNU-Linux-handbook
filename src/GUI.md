@@ -9,7 +9,6 @@ sudo systemctl set-default multi-user
 ```
 
 ## GNOME
-
 Install the GUI:
 ```sh 
 sudo systemctl start gdm3 
