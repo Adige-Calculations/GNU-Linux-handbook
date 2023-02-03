@@ -1,4 +1,4 @@
-# Web server
+## Web server
 
 A web server is a computer program that serves web pages to clients on the web.
 When a client, such as a web browser, makes a request to a web server for a web page,
@@ -9,7 +9,7 @@ store and manage the files that make up a website, as well as to process request
 clients and serve the appropriate files or data in response. Web servers can be configured
 to handle different types of requests, such as serving static or dynamic pages.
 
-## Python web server
+# Python web server
 
 Using the ```http.server``` module, running the following command in a terminal:
 
@@ -19,7 +19,7 @@ python -m http.server
 This will start the HTTP server on your local machine and listen for incoming requests 
 on port 8000.
 
-## Nginx 
+# Nginx 
 
 Install nginx, which is a web server that serve the http pages given the
 http/https request
@@ -48,11 +48,11 @@ sudo systemctl restart nginx
 Remember to put .conf as extension of the file. As a good practice, websites are
 stored in ```/var/www/html```
 
-As an example of a config file:
+As an example of a config file, pointing to an html file to be served:
 
 ```sh
 server {
-    server_name    openfoam-handbook.adigecalculations.com www.openfoam-handbook.adigecalculations.com;
+    server_name    gnulinux-handbook.adigecalculations.com www.gnulinux-handbook.adigecalculations.com;
     root           /var/www/html/OpenFOAM-handbook/book;
     index          index.html;
     proxy_set_header Host      $host;
@@ -62,46 +62,58 @@ server {
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/gnulinux-handbook.adigecalculations.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/gnulinux-handbook.adigecalculations.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 }
 
 server {
-    if ($host = openfoam-handbook.adigecalculations.com) {
+    if ($host = gnulinux-handbook.adigecalculations.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
     listen         80;
     listen         [::]:80;
-    server_name    openfoam-handbook.adigecalculations.com www.openfoam-handbook.adigecalculations.com;
+    server_name    gnulinux-handbook.adigecalculations.com www.gnulinux-handbook.adigecalculations.com;
     return 404; # managed by Certbot
 }
 ```
-Next, an example on how to insert reverse proxy to an internal working webserver:
+Next, an example on how to insert reverse proxy to an internal working webserver listening at port 8000:
 
 ```sh
 server {
-    server_name    openfoam-handbook.adigecalculations.com www.openfoam-handbook.adigecalculations.com;
-    root           /var/www/html/OpenFOAM-handbook/book;
+    server_name    fc.adigecalculations.com www.fc.adigecalculations.com;
     location / {
-      proxy_pass http://127.0.0.1:8000;
-    }
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_pass http://localhost:8000;
+     }
 
-    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen [::]:443 ssl; # managed by Certbot
     listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/openfoam-handbook.adigecalculations.com/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/fc.adigecalculations.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/fc.adigecalculations.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
 
-...
+}
+server {
+    if ($host = fc.adigecalculations.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name    fc.adigecalculations.com www.fc.adigecalculations.com;
+
+    listen [::]:80;
+    return 404; # managed by Certbot
+}
 ```
 
-# Certificates 
+# Certificates  management
 
 To use a HTTPS protocol the web-server must be able to send off certificates to proof that you
 are the owner of the IP address. 
@@ -112,10 +124,9 @@ The first step to using Let’s Encrypt to obtain an SSL certificate is to insta
 ```certbot``` software on your server. You can obtain the certbot-nginx package by typing:
 
 ``` sh
+# Cent-OS package manager
 sudo yum install certbot-nginx
 ```
-
-The certbot client is now installed and ready to use.
 
 ### Set/Grub Nginx addresses
 
@@ -176,9 +187,7 @@ sudo certbot --nginx -d example.com -d www.example.com
 
 This runs certbot with the --nginx plugin, using -d to specify the names we’d like the certificate to be valid for.
 
-If this is your first time running certbot, you will be prompted to enter an email 
-address and agree to the terms of service. After doing so, certbot will communicate
-with the Let’s Encrypt server, then run a challenge to verify that you control the
+Certbot will communicate with the Let’s Encrypt server, then run a challenge to verify that you control the
 domain you’re requesting a certificate for. The configuration will be updated, and
 Nginx will reload to pick up the new settings. certbot will wrap up with a message
 telling you the process was successful and where your certificates are stored.
@@ -208,9 +217,8 @@ and update any that are set to expire in less than thirty days. --quiet tells Ce
 to output information or wait for user input.
 
 
-All installed certificates will be automatically renewed and reloaded when they have thirty days or less before they expire.
-
-
+All installed certificates will be automatically renewed and reloaded when they have thirty
+days or less before they expire.
 
 <!--  Script to show the footer   -->
 <html>

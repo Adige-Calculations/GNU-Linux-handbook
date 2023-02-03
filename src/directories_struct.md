@@ -18,6 +18,7 @@ Here are some common directories found within the root directory:
 | /var               | variable, contains log and system generated file |
 | /lib               | library, contains library files, which are shared code that can be used by multiple programs.
 | /procs             | virtual folder created by the kernel to take trace of the running process |
+
 <!--  Script to show the footer   -->
 <html>
 <script

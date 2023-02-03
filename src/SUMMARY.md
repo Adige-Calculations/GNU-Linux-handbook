@@ -21,4 +21,6 @@
     - [Version control](./utilities/git.md)
     - [Web server](./utilities/web_server.md)
     - [Database](./utilities/database.md)
+    - [Docker](./utilities/docker.md)
+    - [Docker-compose](./utilities/docker-compose.md)
 - [Cross compilation](./cross_compilation.md)

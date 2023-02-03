@@ -12,7 +12,7 @@ uname -m
 ```
 ## Bluetooth peripherical installation
 
-To connect a Bluetooth device, do:
+To connect a Bluetooth device, use systemd a service:
 ```
 sudo bluetoothctl
 ```
