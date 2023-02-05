@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  restsvr:
+    image: gnu-linux-book
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"

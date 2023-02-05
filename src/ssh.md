@@ -20,7 +20,7 @@ port 22
 Then ensure the deamon is running with these configurations:
 
 ```sh
-service ssh start
+system ssh start
 ```
 
 ## SSH tunnelling
@@ -38,23 +38,26 @@ and 8001 of machine 1.
 
 ## Key management
 
-Creta an SSH key:
+Creta a brand new SSH keys pair:
 
 ```sh
 ssh-keygen -t ed25519 -C <your_email@example.com>
 ```
-
-If you want to create a public key from a private key (this is usually
-done if you create a new user and you want to connect to it with the
-same key) run the following command with input the private key (.pem)
+This will genrate a key pair in ```~/.ssh```. However to make a public 
+key out of the private one (usually to reuse the key for different user of machines):
 
 ```sh
-ssh-keygen -y -f sshKey-eu-west-2-HPC.pem > key.pub
+ssh-keygen -y -f ~/path_to_key/<key> ~/path_to_key/<key>.pub
 ```
-the copy and paste the result in the .ssh/authorized_keys file of the
-new user from which you will use your ssh key to connect.
 
+Then run the following commands to transfer the keypairs of the system you know
+the credential:
 
+```sh
+ssh-copy-id -i ~/path_to_key/<key> user@hostaname
+```
+This will generate a ```.ssh/authorized_keys``` file with the credential filled for
+the specified user. Permitting the usage of the key instead of the password.
 
 <!--  Script to show the footer   -->
 <html>

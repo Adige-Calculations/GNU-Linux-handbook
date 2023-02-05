@@ -3,25 +3,32 @@
 There are various tools and commands available in Linux for managing and configuring network settings and connections.
 Some common tasks related to networking on Linux include:
 
-<strong> Setting up network interfaces: </strong> 
+### Setting up network interfaces:  
+
+----------------------------------------------------------------------------------------------------
 Network interfaces are the physical or logical connections that allow a device to communicate with other devices on a network.
 You can use the ```ifconfig``` or ```ip``` utility to view and configure network interfaces.
 
-<strong> Managing network connections: </strong> 
+### Managing network connections:  
+----------------------------------------------------------------------------------------------------
 You can use the ```nmcli``` or ```nm-applet``` command to manage and create network connections in Linux. 
 These commands allow you to configure the network settings for various types of connections, such as Ethernet, WiFi, and VPN.
 
-<strong> Viewing network statistics: </strong> 
+### Viewing network statistics:  
+----------------------------------------------------------------------------------------------------
 You can use the ```ip``` or ```netstat``` command to view network statistics, such as the number of packets sent and received,
 the number of errors, and the status of network connections.
 
-<strong> Debugging network issues: </strong> 
+### Debugging network issues: 
+ ----------------------------------------------------------------------------------------------------
 If you encounter any issues with your network connections, you can use the ```ping```, ```traceroute```, and ```mtr``` commands 
 to troubleshoot the problem. These commands allow you to test the connectivity and performance of a network connection.
 
 
 ## Private IP Address
-```192.168.0.0``` is the beginning of the private IP address range (that includes all IP addresses through ```192.168.255.255```).
+
+```192.168.0.0``` is the beginning of the private IP address range (that includes all IP addresses through ```192.168.255.255```)
+assigned by .
 
 
 One common IP address assigned to home routers is 192.168.1.1. This IP address is used because the router is on the
@@ -36,7 +43,12 @@ If you are interested into visualize the private IP addresses of your network ru
 
 ```sh
 nmap -sP 192.168.1.0/24 
-nmap -sT -O 192.168.1.0/24  # Return also the OS of the system 
+```
+
+To returna panoramic of the system you want to investigate
+
+```sh
+nmap -sT -O <private_IP_address>   
 ```
 
 > An address like 192.168.0.0 becomes unusable for any 
@@ -59,3 +71,13 @@ The public IP address can change over time, especially if you have a dynamic IP 
 your Internet Service Provider (ISP). If you have a dynamic IP address, it may change every time you connect
 to the Internet or after a certain period of time. If you have a static IP address, it will remain the same 
 unless you change it manually or through your ISP.
+
+# Local IP address
+
+```localhost``` is the default name of the computer you are working on. The term is a pseudo name for the
+IP address```127.0.0.1```. This IP address allows the machine to connect to and communicate with itself.
+Therefore, localhost (127.0.0.1) is used to establish an IP connection to the same device used by the end-user.
+
+Although using ```127.0.0.1``` is the most common practice, the IPv4 network standard reserves the range 127.0.0.1
+– 127.255.255.255 for ```localhost```. Using another IP address within the range results in the same or similar manner.
+ The IPv6 standard assigns one address to loopback - :: 1.
