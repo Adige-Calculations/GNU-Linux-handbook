@@ -32,10 +32,23 @@ gnome-session-quit
 
 ## Display protocol
 
+Two mainstream display protocols exist:
+
+- x11
+- Wayland  
+
 To check which display protocol you are running, run:
 
 ```sh
 echo $XDG_SESSION_TYPE
+```
+
+To enable  Wayland as a graphic protocol for GNOME to run on, modify the configuration file at ```etc/gmd/custom.conf``
+
+```sh
+[daemon]
+WaylandEnable=true
+...
 ```
 
 <!--  Script to show the footer   -->
