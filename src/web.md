@@ -43,7 +43,7 @@ DELETE — return 204 (NO CONTENT) If the operation fails, return the most speci
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../footers/footer.html");
 });
 </script>
 <body>
