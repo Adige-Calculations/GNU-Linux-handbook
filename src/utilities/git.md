@@ -158,6 +158,34 @@ git branch -d <localBranchName>
 
 the **remote_name** usually is: **origin**
 
+# Contribute to a project 
+
+You can contribute to an existing project, opening a pull request.
+The overall process should look somewhat like this:
+
+1. Fork the repo.
+
+2. Clone your fork locally:
+  `git clone https://github.com/your_username/forked_project.git`
+
+3. Create a feature branch, e.g. named after the command you plan to edit:
+  `git checkout -b branch_name`
+
+  > :warning: It is bad practice to submit a pull request from the `main` branch of your forked repository.
+
+4. Make your changes
+
+5. Commit the changes:
+  `git commit --all -m "commit_message"`
+
+6. Push the commit(s) to your fork:
+  `git push origin branch_name`
+
+  > :warning: Please avoid force-pushing since it makes the review process harder.
+
+7. Go to the GitHub page for your fork and click the green "Compare & pull request" button.
+
+
 ## GitHub SSH keys
 
 To acceed in Github using the SSH protocol, you need to make aware the platform of 
