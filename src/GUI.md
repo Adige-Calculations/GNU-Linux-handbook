@@ -60,10 +60,11 @@ WaylandEnable=true
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer.html");
+  $("#footer").load("../footers/footer_first_level_depth.html");
 });
 </script>
 <body>
 <div id="footer"></div>
 </body>
 </html>
+

@@ -3,11 +3,9 @@
 Git is a programme which permit to share project and contribute in open
 source manner. The usual work frame is to download (clone in git
 language) the code, apport modification and upload the code (push in git
-language). The following image show how Git works in a schematic way:
+language). T
 
-<img src="media/image4.png" style="width:1.77154in;height:1.67826in" alt="Diagram Description automatically generated" />
-
-If you already have a git server, configure the git client running:
+If you already have a git server, configure the client running:
 
 ```sh
 git config --global user.email "<yourEmail>"
@@ -19,13 +17,13 @@ git config --global user.name "<yourName>"
 Once cloned the repository you are interest with on your local device:
 
 ```sh
-# More suitable for GNU/Llinux system 
+# Using the SSH protocol, you must have a key the access the repository
 git clone <sshAddress>
-# More suitable for Windows machine 
+# or you can use the https protocol
 git clone <repositoryUrl>
 ```
 
-With an existing repository:
+With an existing repository, to get new remote code run:
 
 ```sh
 git pull
@@ -40,7 +38,7 @@ git init -b main
 git add . && git commit -m "initial commit"
 ```
 
-### Navigate into the repository
+### Navigate the repository
 
 Look at the local branches in your repository:
 
@@ -48,7 +46,8 @@ Look at the local branches in your repository:
 git branch
 ```
 To see all other branches hiding in your repository and you can use the
--a flag:
+--all/-a flag.
+
 ```sh
 git branch --all
 ```
@@ -82,7 +81,7 @@ To not consider the changes made since the last commit, you can stash your chang
 ```sh 
 git stash
 ```
-However if the data are needed in the future, you can recover the last stashed with:
+However if the data are needed in the future, you can recover the last stashed repository state with:
 
 ```sh
 # Only the last stashed modifications 
@@ -94,27 +93,10 @@ Add some code and then do a commit into the base level of the
 repository. Stages all changes:
 
 ```sh
-git add -A  
-```
-Stages new files and modifications, without deletions (on the current directory and its subdirectories).
-
-```sh
 git add . 
+# Or a particolar file 
+git add path/to/file
 ```
-Stages modifications and deletions, without new files
-
-```sh
-git add -u 
-```
-
-### Merge branches
-
-If you are in the ```main``` branch, run:
-
-```sh
-git merge <dev-branch-name>
-```
-To merge the dev-branch modification into main
 
 ### Commit code
 
@@ -125,6 +107,15 @@ git commit -m “comment”
 ```
 A commit file will appear where you need to make visible the changes you
 want to commission.
+
+### Merge branches
+
+If you are in the ```main``` branch, run:
+
+```sh
+git merge <dev-branch-name>
+```
+To merge the dev-branch modification into main.
 
 ### Push
 
@@ -158,7 +149,7 @@ git branch -d <localBranchName>
 
 the **remote_name** usually is: **origin**
 
-# Contribute to a project 
+# Contribute to a project - GitHub 
 
 You can contribute to an existing project, opening a pull request.
 The overall process should look somewhat like this:

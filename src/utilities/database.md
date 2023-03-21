@@ -1,6 +1,7 @@
 # Database
-A database is a collection of data that is organized in a specific way and stored electronically. Databases are used to store,
-retrieve, and manipulate data efficiently. As example a relational open-source database is described in its main functionalities
+
+A database is a programme that create a collection of data that is organized in memody in a specific way. Databases are used to store,
+retrieve, and manipulate data efficiently. As example a relational open-source database ```postgresql``` is described in its main functionalities:
 and interfaces
 
 ## postgresql

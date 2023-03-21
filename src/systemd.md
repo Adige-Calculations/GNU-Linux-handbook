@@ -1,4 +1,5 @@
-# Services & Init system
+# Init system & Services
+
 System will be covered, which is the init programme present in the majority
 of the system out there.
 
@@ -43,7 +44,7 @@ systemctl deamon-reload
 systemctl restart <service>.service
 ```
 
-### Services (pr Deamons)
+### Services (or Deamons)
 
 Usually, services run at boot and keep running in background,
 ```systemd``` is the init system in mostly of the GNU/Linux distributions and it
