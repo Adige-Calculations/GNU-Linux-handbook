@@ -6,8 +6,7 @@ in a mantainable way. A way to include only the necessary portion to it is via t
 ## LMOD (Environmental module system)
 
 LMOD provides a convenient way to dynamically change a user's environment through modulefiles.
-
-
+-----------------------------------------------------------------------------------
 
 A modulefile contains the necessary information to allow a user to run a particular application or provide access to a particular library.
 This includes easily adding or removing directories to the PATH environment variable.

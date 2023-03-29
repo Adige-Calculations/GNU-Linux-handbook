@@ -10,6 +10,8 @@
 - [Hardware](./hardware/hardware_scan.md)
     - [NVIDIA](./hardware/nvidia.md)
 - [Library](./libraries/libraries.md)
+	- [Libraries workflow](./libraries/library_workflows.md)
+	- [Lib dependencies management](./libraries/libraries_dependency_management.md)
 - [GUI](./GUI.md)
     - [Menu icons](./menu_icons.md)
 - [Processes](./processes.md)
