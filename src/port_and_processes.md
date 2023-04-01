@@ -6,16 +6,16 @@ The main utilities are shown below:
 ```ps``` - Information about running processes.  
 ```nc``` - Netcat is a versatile utility for working with TCP or UDP data.
 
-## Processes 
+## Processes
 
-To report a snapshot of the current processes use
+To report a snapshot of the current processes in the system:
+
 ``` sh
 ps -ef
 ```
+
 This can tell you what processes are running on your system even if they
 do not use a port
-
-
 
 ### Manage the process
 
@@ -33,22 +33,23 @@ Returning this table header:
 State      Recv-Q Send-Q      Local Address:Port       Peer Address:Port
 ```
 
-Commonly used piping the grep command
+Commonly used in combination with grep to isolate the process or socket you are interested in:
+
 ```sh
 ... | grep <processDescriptionOrPort>
 ```
 
 ### Kill the process
+
 The command kill comes in. To kill all processes which match their full
 command instead of just the process name execute:
 
 ```sh
+kill "PID_single_process" 
 pkill -f "command_name"
 ```
-The flag ```-9``` references the signal that we will send to the process, and
-we pass in the process ID within that process group we want to kill.
 
-The signals you can send are:
+The signals you can send (as flags) are listed below:
 
 - 1 — HUP (hang up)
 - 2 — INT (interrupt)
@@ -58,12 +59,10 @@ The signals you can send are:
 - 14 — ALRM (alarm clock)
 - 15 — TERM (software termination signal)
 
+### Check sockets of a remote server from local machine
 
-### Check sockets from client side
-
-From the client side you can use the ```netcat``` command. The ```nc``` (or
-netcat) utility is used to analyze TCP, UDP, or UNIX-domain sockets. The syntax to
-check a server is:
+The ```nc``` (or netcat) utility is used to analyze TCP, UDP, or UNIX-domain sockets. The syntax to
+check a remote server is:
 
 ```sh
 nc -vz <host> <port>  
@@ -72,17 +71,10 @@ nc -vz 192.168.2.254 80
 # Example 2
 nc -vz www.cyberciti.biz 443
 ```
-From a Windows client side, to see if your machine can reach those
-machines through those port type:
 
-```sh 
-telnet <ipAddressServer> <portNumber>
-```
+### Furthem spocket management on local machine
 
-### Manage sockets from client
-
-The nc (or netcat) utility is used for just about anything under the sun involving
-TCP, UDP, or UNIX-domain sockets. The syntax is:
+Using ```nc```, the syntax is:
 
 ```sh
 # Listen on a specified port and print any data received:
