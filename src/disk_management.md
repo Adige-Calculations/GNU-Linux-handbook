@@ -6,23 +6,27 @@ report all file systems and their disk usage:
 ```sh
 df --human 
 ```
+
 Instead to estimate and summarize file and directory space usage, run the following:
 
 ``` sh
 du --human 
 ```
+
 A good example on how to used the ```df``` utility is to check which root directory contains more data:
 
 ```sh
 du -h –max-depth=1 \ | sort -n
 ```
-## Enlarge the disk volume 
+
+## Enlarge the disk volume
 
 If allocated a new disk, run the following command to list all storage devices in a tree-like format:
 
 ``` sh
 lsblk
 ```
+
 To enlarge a current disk perform the following commands:
 
 ``` sh

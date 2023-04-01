@@ -19,25 +19,26 @@ To report a snapshot of the current processes use:
 ``` sh
 ps -ef
 ```
+
 It scan all processes that are running on your system (Process that does and does not use a port)
 
 ## Manage processes sockets
 
-To see processes state, ports and understand if they are listening, it is possible to
-run the ```ss``` command when a programme is running in the background, since 
-it is a utulity to investigate sockets:
+To see processes state, socket they are using and check if they are listening on it, use the ```ss```
+command:
 
 ```cosnole
 sudo ss -lptn
 ```
 
-Returning this table header:
+Which will returning this table header:
 
 ```sh
 State      Recv-Q Send-Q      Local Address:Port       Peer Address:Port
 ```
 
 Commonly used piping the grep command
+
 ```sh
 ... | grep <processDescriptionOrPort>
 ```
@@ -50,6 +51,7 @@ command instead of just the process name execute:
 ```sh
 pkill -f "command_name"
 ```
+
 The flag ```-9``` references the signal that we will send to the process, and
 we pass in the process ID within that process group we want to kill.
 

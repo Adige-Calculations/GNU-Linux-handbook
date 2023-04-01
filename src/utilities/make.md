@@ -1,10 +1,12 @@
 # Make
 
+```make``` is a build system, designed to automate tasks.
+
 ## Makefile
 
 An introduction at the ```make``` utility is usefull to understand the step to compile a library/porogramme:
 
-```makefile 
+```makefile
 final_executable: libmymath.so main.o
 	g++ main.o -L . -l_mymath -o final_executable
 

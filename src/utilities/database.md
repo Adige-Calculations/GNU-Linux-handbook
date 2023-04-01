@@ -28,6 +28,7 @@ recent RHEL based system.
 ```sh
 sudo dnf install postgresql-server postgresql-contrib
 ```
+
 The postgresql server is not running and disabled by default. To set it
 to start at boot, run:
 
@@ -72,7 +73,8 @@ on these two files, since by deafult ```postgreql``` it accept only local connec
 Editing ```postgresql.conf``` you can accept all network connections, changing:
 ```listen_addresses = 'localhost'``` into ```listen_addresses = '\*'``` 
 
-## Other configurations
+## Further configurations
+
 Once your database is set up, you need to configure access to your
 database server. This may be done by editing file
 ```/var/lib/pgsql/data/pg_hba.conf```. There are rules like this in the file:
@@ -82,8 +84,8 @@ host all all 127.0.0.1/32 md5
 host all all ::1/128 md5  
 local all postgres peer
 ```
-First field stands for connection type. It can have these values:
 
+First field stands for connection type. It can have these values:
 
 - local — Unix-domain socket
 - host — plain or SSL-encrypted TCP/IP socket

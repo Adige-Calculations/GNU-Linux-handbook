@@ -151,7 +151,7 @@ runtime, which means that they are not linked into a program at compile time lik
 To understand the dynamic library that an executable requires you can run:
 
 ```sh
-ldd </path/to/the/executable>
+ldd </path/to/executable>
 ```
 
 Which will print all shared object dependencies. Dynamic libraries are often used to provide common functionality 
@@ -159,7 +159,7 @@ that is needed by multiple programs, such as system functions, graphical user in
 connectivity libraries. In Unix like system, dynamic libraries have the file extension .so (shared object), while in 
 Windows they have the extension .dll (dynamic-link library).
 
-## Advantages and Limitations
+## Advantages and limitations
 
 Dynamic libraries have several advantages over static libraries:
 
