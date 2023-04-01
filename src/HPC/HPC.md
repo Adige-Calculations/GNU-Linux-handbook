@@ -4,7 +4,7 @@ HPC systems are typically made up of a large number of processors (such as CPUs 
 to perform calculations in parallel. They may also have a lot of memory and fast interconnects to allow the 
 processors to communicate and share data quickly.
 
-# HPC users connection
+## HPC users connection
 On a server side, once a new user is set up, create a
 ```/home/<newUser>/.ssh/authorized_keys``` file.
 
@@ -40,7 +40,7 @@ And to make reachable this user via ssh without rebooting the machine, restart t
 sudo systemctl restart sshd
 ```
 
-## Add path to all the users
+### Add path to all the users
 
 When a new user is created, it can happen that some
 applications are not recognized as installed, Make all the users aware

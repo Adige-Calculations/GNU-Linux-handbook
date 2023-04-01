@@ -2,31 +2,29 @@
 
 ## .a   -   Static library
 
-An A file contains a library of functions and headers that may be referenced by a C/C++ source file.
-It may store only a few functions or may include an entire library of functions, such as a 3D modeling engine.
+An archive```.a``` file contains a library of functions and headers that may be referenced by a C/C++ source file.
+It may store only a few functions or may include an entire library of functions.
 A files are typically created by the GNU ar utility.
 
-## .so  -   Shared library
+## .so  -   Shared library - Dynamic library
 
-An SO file is a shared library used by programs. It contains common programme functions and logic that multiple
-programs require access to. SO files allow programs to access common functions from one shared place in a computer's
+An shared object ```.so``` file is a shared library used by programs. It contains common programme functions and logic that multiple
+programs require access to, ```.so``` files allow programs to access common functions from one shared place in a computer's
 system memory, rather than implementing their own versions of the functions. This streamlines the programs' structure
 as well as their interaction with users' operating systems.
 
-SO files often reside in the following Linux directories:
-
+Dynamic library files (```.so```) often reside in the following Linux directories:
 
 - ```/lib```
 - ```/usr/lib```
 - ```/usr/local/lib```
 
-C and C++ programs installed on the Linux and Android operating systems most commonly use SO files. Developers often 
-build SO files using the "gcc" C/C++ compiler included in the GNU Compiler Collection (GCC).
+C and C++ programs installed on the Linux and Android operating systems most commonly use ```.so``` files.
 
 Use the command:
 
 ```sh
-nm -D path/to/filename.so.
+nm -D path/to/filename.so
 ```
 
 to view a list of the functions an SO file contains.
@@ -39,7 +37,7 @@ process. O files themselves are typically not executable.
 When compiling a C program, compilers first transform all the program's source code files into compiled
 object files. The compiler then links the compiled object files into an executable file.
 
-C and C++ compilers, often create, reference, and use O files during the program compilation process.
+C and C++ compilers create, reference, and use ```.o``` files during the program compilation process.
 
 # Libraries workflows
 
@@ -166,11 +164,6 @@ Dynamic libraries have several advantages over static libraries:
 - The executabel take up less space, because multiple programs can share the same copy of the library.
 - They are easier to update, because you only have to update the library file itself instead of rebuilding all the programs that use it.
 - They allow programs to use new functionality without being recompiled, as long as the interface to the library remains the same.
-
-Dynamic libraries also have some disadvantages:
-
-- They can cause runtime errors if the library file is not found or is incompatible with the program.
-- They can be slower to load than static libraries, because they need to be loaded into memory at runtime.
 
 <!--  Script to show the footer   -->
 <html>
