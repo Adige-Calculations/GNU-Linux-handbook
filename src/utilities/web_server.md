@@ -1,4 +1,4 @@
-## Web server
+# Web server
 
 A web server is a computer program that serves web pages to clients on the web.
 When a client, such as a web browser, makes a request to a web server for a web page,
@@ -9,17 +9,18 @@ store and manage the files that make up a website, as well as to process request
 clients and serve the appropriate files or data in response. Web servers can be configured
 to handle different types of requests, such as serving static or dynamic pages.
 
-# Python web server
+## Web server with Python modules
 
 Using the ```http.server``` module, running the following command in a terminal:
 
 ```sh
 python -m http.server
 ```
+
 This will start the HTTP server on your local machine and listen for incoming requests 
 on port 8000.
 
-# Nginx 
+## Nginx 
 
 Install nginx, which is a web server that serve the http pages given the
 http/https request
@@ -45,6 +46,7 @@ Adding a new .conf file and restarting the service, you should have your website
 sudo vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
 sudo systemctl restart nginx
 ``` 
+
 Remember to put .conf as extension of the file. As a good practice, websites are
 stored in ```/var/www/html```
 
@@ -66,7 +68,6 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/gnulinux-handbook.adigecalculations.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
 }
 
 server {
@@ -80,6 +81,7 @@ server {
     return 404; # managed by Certbot
 }
 ```
+
 Next, an example on how to insert reverse proxy to an internal working webserver listening at port 8000:
 
 ```sh
@@ -139,16 +141,19 @@ Find the existing server_name line in ```/etc/nginx/nginx.conf``` such as:
 ``` sh
 server_name adigecalculations.com www.adigecalculations.com;
 ```
+
 Verify the syntax of your configuration edits with:
 
 ``` sh
 sudo nginx -t
 ```
+
 If that runs with no errors, reload Nginx to load the new configuration:
 
 ``` sh
 sudo systemctl reload nginx
 ```
+
 Certbot will now be able to find the correct server block and update it.
 Then a firewall update allows HTTPS traffic.
 
@@ -158,7 +163,7 @@ If you have a firewall enabled, make sure port 80 and 443 are open to incoming t
 If you are not running a firewall, you can skip ahead, otherwise you can open these ports
 by typing:
 
-``` sh 
+``` sh
 sudo firewall-cmd --add-service=http
 sudo firewall-cmd --add-service=https
 sudo firewall-cmd --runtime-to-permanent
@@ -181,7 +186,7 @@ Certbot provides a variety of ways to obtain SSL certificates, through various p
 The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever
 necessary:
 
-``` sh 
+``` sh
 sudo certbot --nginx -d example.com -d www.example.com
 ```
 
@@ -194,6 +199,7 @@ telling you the process was successful and where your certificates are stored.
 Your certificates are downloaded, installed, and loaded.
 
 ### Setting Up Auto Renewal
+
 Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage 
 users to automate their certificate renewal process. We’ll need to set up a regularly
 run command to check for expiring certificates and renew them automatically.
@@ -204,6 +210,7 @@ periodic jobs. We tell cron what to do by opening and editing a file called a cr
 ```sh
 sudo crontab -e
 ```
+
 The default ```crontab``` config file will open. Paste in the following line:
 
 ```sh

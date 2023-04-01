@@ -1,16 +1,19 @@
 # Library
 
+A library is code enclosed in external file which contains functionality to be included in a new codebase.
+
 ## .a   -   Static library
 
 An archive```.a``` file contains a library of functions and headers that may be referenced by a C/C++ source file.
 It may store only a few functions or may include an entire library of functions.
 A files are typically created by the GNU ar utility.
 
-## .so  -   Shared library - Dynamic library
+## .so  -   Shared object | Dynamic library
 
-An shared object ```.so``` file is a shared library used by programs. It contains common programme functions and logic that multiple
-programs require access to, ```.so``` files allow programs to access common functions from one shared place in a computer's
-system memory, rather than implementing their own versions of the functions. This streamlines the programs' structure
+An shared object ```.so``` file is a shared library used by programs. It contains common
+programme functions and logic that multiple programs require access to, ```.so``` files 
+allow programs to access common functions from one shared place in a computer's system memory,
+rather than implementing their own versions of the functions. This streamlines the programs' structure
 as well as their interaction with users' operating systems.
 
 Dynamic library files (```.so```) often reside in the following Linux directories:
@@ -29,15 +32,13 @@ nm -D path/to/filename.so
 
 to view a list of the functions an SO file contains.
 
-##  .o   -  Object
+## .o  -  Object file
 
-An O file is a compiled C program object. Some C compilers create O files during the executable creation
-process. O files themselves are typically not executable.
+An ```.o``` file is a compiled C program object. Some C compilers create ```.o``` files during the executable creation
+process. ```.o``` files themselves are typically not executable.
 
 When compiling a C program, compilers first transform all the program's source code files into compiled
 object files. The compiler then links the compiled object files into an executable file.
-
-C and C++ compilers create, reference, and use ```.o``` files during the program compilation process.
 
 # Libraries workflows
 
@@ -67,16 +68,16 @@ and with a main source file ```main.c``` like
 double addition_result = add(double 1., double 2.)
 std::cout << addition_result << std::endl;
 ```
+
 ## Create and use a static library
 
 Then treat this library file (```~/add.c```) as a common source file:
 
 ```sh
-g++ -c add.cpp -o add.o
+gcc -c add.cpp -o add.o
 ```
 
 The -c flag is indicating that you want to compile but not link the file to anything else.
-
 
 ### Wrap the output file as a static library.
 
@@ -96,10 +97,10 @@ The -cr flag is to indicate creating a new static library file.
 Compile the main c file into an object file as follwows and link it to the static library to create final executable with the library embedded into it:
 
 ```sh
-g++ main.cpp libmymath.a -o final_executable
+gcc main.cpp libmymath.a -o final_executable
 
 # A more explicit and preferred  way to link a library is:
-g++ main.cpp -L. -lmymath
+gcc main.cpp -L. -lmymath
 ```
 
 The flag (-L) is used to explicitly specify the library path while (-l) the library name, as convetion the lib prefix is expressed in this way.
@@ -109,7 +110,7 @@ The flag (-L) is used to explicitly specify the library path while (-l) the libr
 We can verify that the library has been copied into the executable by deleting the library
 and running:
 
-```
+```sh
 rm lib_mymath.a 
 ./a.out
 ```
@@ -119,32 +120,29 @@ rm lib_mymath.a
 Similar to static library, create an object file:
 
 ```sh
-g++ -c my_math.cpp -o my_math.o
+gcc -c my_math.cpp -o my_math.o
 ```
 
 Then create a shared object out of it 
 
 ```sh
-g++ -shared -o libmymath.so my_math.o
+gcc -shared -o libmymath.so my_math.o
 ```
 
 and either move the .so file into the library path, or enlarge the existing one:
 
-```
+```sh
 export LD_LIBRARY_PATH="/path/to/your/project/root:$LD_LIBRARY_PATH"
 ```
 
 Create the executable:
 
 ```sh
-g++ main.o -L. -lmymath -o final_executable
+gcc main.o -L. -lmymath -o final_executable
 ```
 
-# Dynamic library
-
-A dynamic library, also known as a shared library, is a file that contains compiled code and 
-data that can be used by multiple programs at the same time. Dynamic libraries are loaded at 
-runtime, which means that they are not linked into a program at compile time like static libraries.
+Dynamic libraries are loaded at runtime, which means that they are not linked
+into a program at compile time like static libraries.
 
 To understand the dynamic library that an executable requires you can run:
 

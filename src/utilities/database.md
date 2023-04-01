@@ -102,8 +102,7 @@ any user without supplying password
 - peer — obtains user’s name from operating system and checks if it
 matches database user name
 
-
-Editing ```pg_hba.conf```, changing ```host all 127.0.0.1/32 ident``` to you are allowong 
+Editing ```pg_hba.conf```, changing ```host all 127.0.0.1/32 ident``` to you are allowong
 the world to connect with username/password.
 
 ```sh
@@ -119,6 +118,7 @@ server, so do it only on a trusted network:
 ```sh
 host all all 127.0.0.1/32 trust
 ```
+
 As soon as you are able to connect, turn on the security systems one by
 one while verifying the connection can be established.
 
