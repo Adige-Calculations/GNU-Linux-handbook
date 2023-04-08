@@ -28,6 +28,15 @@ Dynamic libraries also have some disadvantages:
 - They can cause runtime errors if the library file is not found or is incompatible with the program.
 - They can be slower to load than static libraries, because they need to be loaded into memory at runtime.
 
+# Check object files
+
+To list symbol names in object files, you can use the 
+
+```sh
+nm file.o
+```
+
+to list function symbol and respective definition of object files.
 <!--  Script to show the footer   -->
 <html>
 <script

@@ -29,7 +29,7 @@ for every shell you open unless you add it within ```$HOME/.bashrc```.
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../footers/footer.html");
 });
 </script>
 <body>

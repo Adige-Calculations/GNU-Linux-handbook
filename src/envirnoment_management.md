@@ -24,7 +24,7 @@ export LD_LIBRARY_PATH="/path/to/new/lib_newlibrary:$LD_LIBRARY_PATH"
 </script>
 <script>
 $(function(){
-  $("#footer").load("../footers/footer_first_level_depth.html");
+  $("#footer").load("../footers/footer.html");
 });
 </script>
 <body>

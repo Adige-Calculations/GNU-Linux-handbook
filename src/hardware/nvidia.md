@@ -1,6 +1,13 @@
 # NVIDIA
 
+Check your Nvidia device:
+
+```sh
+lspci | grep -i nvidia
+```
+
 ## Check if CUDA is installed
+
 Run which nvcc to find if the Nvidia CUDA Compiler (NVCC) is installed properly.
 
 ```sh
@@ -24,6 +31,7 @@ Built on Thu_Nov_18_09:45:30_PST_2021
 Cuda compilation tools, release 11.5, V11.5.119
 Build cuda_11.5.r11.5/compiler.30672275_0
 ```
+
 This means that we have CUDA version 11.5.119 installed.
 
 

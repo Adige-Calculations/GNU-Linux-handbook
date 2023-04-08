@@ -1,7 +1,11 @@
 # Libraries workflows
 
-A mention to the GNU C Compiler (```gcc```) is worthwhile.
-Working from ```~```, create a```~/add.c``` file with a function in it, such as:
+A mention to the GNU C Compiler (```gcc```) is worthwhile. Therefore we few basic source file to 
+explain few concepts.
+
+### File generation
+
+Working from ```~```, create a ```~/add.c``` file such as:
 
 ```c
 #include "add.h"
@@ -10,21 +14,30 @@ double add(double a, double b) {
 	return(a + b)
 }
 ```
-With a similar headerfile ```~/add.h```
+With coupled an headerfile ```~/add.h```
 
-```h
-double add(double x, double y)
+```sh
+echo "double add(double x, double y);" > add.h
 ```
 
-and with a main source file ```main.c``` like
+and a main source file ```main.c``` like
 
 ```c
 #include <stdio.h>
 #include "add.h"
 
 double addition_result = add(double 1., double 2.)
-std::cout << addition_result << std::endl;
+printf("The additon result is: %d \n", addition_result);
 ```
+# Compilation procedure
+
+Compilers first transform all the program's source code files into  object ```.o``` files.
+The compiler then links the compiled object files into an executable file.
+
+### .o - Object file
+
+An ```.o``` file is a compiled C program object. Some C compilers create ```.o``` files during the executable creation process. ```.o``` files themselves are typically not executable.
+
 ## Create and use a static library
 
 Then treat this library file (```~/add.c```) as a common source file:
@@ -35,7 +48,6 @@ gcc -c add.cpp -o add.o
 
 The -c flag is indicating that you want to compile but not link the file to anything else.
 
-
 ### Wrap the output file as a static library.
 
 In Linux/GNU systems, it involves using the ```ar``` application (an archive utility tool) to create the static library file (.a : archive file)
@@ -45,9 +57,9 @@ such as:
 ar -cr libmymath.a add.o
 ```
 
-The -cr flag is to indicate creating a new static library file.
+The ```-cr``` flag is to indicate creating a new static library file.
 
-> Notice the name of output is “libmymath.a”. It is a convention to name the file libXXX.a. When the library is used, the compiler  relies on this convention for the linker to work properly.
+> Notice the name of output is “libmymath.a”. It is a convention to name the file libXXX.a. The compiler  relies on this convention for the linker to work properly.
 
 ### Link the library
 
@@ -60,7 +72,7 @@ gcc main.cpp libmymath.a -o final_executable
 gcc main.cpp -L. -lmymath
 ```
 
-The flag (-L) is used to explicitly specify the library path while (-l) the library name, as convetion the lib prefix is expressed in this way.
+The flag ```-L``` is used to explicitly specify the library path while ```-l``` the library name, as convetion the lib prefix is expressed in this way.
 
 ### Delete the library for verification
 
