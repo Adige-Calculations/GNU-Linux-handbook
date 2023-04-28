@@ -6,25 +6,26 @@ for a static or dynamic library
 
 ## .a   -   Static library
 
-An archive```.a``` file contains a library of functions and headers that may be referenced by a C/C++ source file.
-It may store only a few functions or may include an entire library of functions.
-Archive files are typically created by the GNU ```ar``` utility.
+An archive ```.a``` file contains a library that may contain few functions or include an entire library of functions.
+Archive files are typically created by the GNU ```ar``` utility. They are used as a compilation artifact and consequently 
+embedded inside the target binary. The final binary that get produced from this libraries does not depend on the ```.a```
+to work. 
 
 ## .so  -   Shared Object  |  dynamic library
 
 A shared object ```.so``` file is a shared library used by programs. It contains common
 programme functions and logic that multiple programs require access to, ```.so``` files 
 allow programs to access common functions from one shared place in a computer's system memory,
-rather than implementing their own versions of the functions.
+rather than implementing their own versions of the functions. <b> They must be present in the system
+and reachable from the linked ```ld```. </b>
 
-Dynamic library files (```.so```) often reside in the following Linux directories:
+Dynamic library files (```.so```) often reside in the following directories:
 
 - ```/lib```
 - ```/usr/lib```
 - ```/usr/local/lib```
 
-> Dynamic libraries are loaded at runtime, which means that they are not linked
-into a program at compile time like static libraries.
+> Dynamic libraries are loaded at runtime, which means that they are not linked into a program at compile time like static libraries.
 
 ### System operation on library files
 
@@ -34,7 +35,7 @@ To view a list of the functions an ```.so``` file contains, use:
 nm -D path/to/filename.so
 ```
 
-To understand the dynamic library that an executable requires you can run:
+To understand the dynamic libraries that an executable requires you can run:
 
 ```sh
 ldd </path/to/executable>

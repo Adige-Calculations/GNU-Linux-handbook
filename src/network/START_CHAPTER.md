@@ -72,7 +72,7 @@ your Internet Service Provider (ISP). If you have a dynamic IP address, it may c
 to the Internet or after a certain period of time. If you have a static IP address, it will remain the same 
 unless you change it manually or through your ISP.
 
-# Local IP address
+## Local IP address
 
 ```localhost``` is the default name of the computer you are working on. The term is a pseudo name for the
 IP address```127.0.0.1```. This IP address allows the machine to connect to and communicate with itself.
@@ -81,3 +81,21 @@ Therefore, localhost (127.0.0.1) is used to establish an IP connection to the sa
 Although using ```127.0.0.1``` is the most common practice, the IPv4 network standard reserves the range 127.0.0.1
 – 127.255.255.255 for ```localhost```. Using another IP address within the range results in the same or similar manner.
  The IPv6 standard assigns one address to loopback - :: 1.
+
+<!--  Script to show the footer   -->
+<html>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#footer").load("../footers/footer.html");
+});
+</script>
+<body>
+<div id="footer"></div>
+</body>
+</html>
+
