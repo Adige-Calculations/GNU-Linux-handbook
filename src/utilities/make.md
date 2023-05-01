@@ -38,6 +38,20 @@ clean:
 	rm -r main.o my_math.o
 ```
 
+There are lots of different makefile solutions which have cropped up over the years but a simple gmake
+ might look like one:
+
+```makefile
+SRCS = main.o mario_game.o sprites.o sfx.o
+OBJS = $(SRCS:.cpp=.o)
+EXE = mario_game
+$(EXE): $(OBJS)
+    $(CC) $(CFLAGS) -o $(EXE) $(OBJS)
+.cpp.o:
+    $(CC) $(CFLAGS) -c $< -o $@
+```
+
+
 <!--  Script to show the footer   -->
 <html>
 <script

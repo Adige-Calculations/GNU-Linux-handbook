@@ -1,8 +1,8 @@
 # Library
 
 A library is code enclosed in external files, which contains functionality to be included in a new codebase.
-A library can be source code or precompiled. Regarding the C programming language, the source code can be a compilaion target
-for a static or dynamic library
+A library can be source code or precompiled. Regarding the C programming language, the source code can be a 
+compilaion target for a static or dynamic library (or an executable).
 
 ## .a   -   Static library
 
@@ -32,6 +32,7 @@ Dynamic library files (```.so```) often reside in the following directories:
 To view a list of the functions an ```.so``` file contains, use:
 
 ```sh
+nm objectfile.o
 nm -D path/to/filename.so
 ```
 
