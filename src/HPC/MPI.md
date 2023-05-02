@@ -1,19 +1,47 @@
 # MPI (Message Passage Interface)
 
-Here it is presented an example on how to set yup a Fedora system with MPI compilers, using ```module```  (from the ```lmod``` package).
+<b> MPI is a library. </b>  Applications can be written in C, C++ or Fortran and appropriate 
+calls to MPI can be added where required. Different implementation of the MPI protocol are 
+avaiable (OpenMPI, MPICH, InteMPI, etc...).
 
-To use use the OpenMPI compilers (mpicc, mpic++, etc.) and consequently usingh  the ```mpirun``` utility,
-you’ll need to install the openmpi package as well as set up the envionrment paths correctly (using ```module```).
+### Compilation:
 
-To install:
+Regular applications
+
+```sh
+gcc test.c -o test
+```
+
+MPI applications:
+
+```sh
+mpicc test.c -o test
+```
+### Execution:
+
+Regular applications
+
+```sh
+./test
+```
+
+MPI applications (running with 16 processes):
+
+```sh
+ mpiexec –n 16 ./test
+```
+
+## System setup
+
+Here it is presented an example on how to set up a Fedora system with MPI compilers wrapper.
+you’ll need to install the openmpi package, as well as set up the envionrment paths correctly
+(the ```module``` utility becomes handy).
+
+To install a packaged library:
 
 ```sudo dnf install openmpi openmpi-devel```
 
-Then to set up the ```lmod``` correctly so that PATH is set, you have to source the environment modules program installed by default on Fedora:
-
-```source /etc/profile.d/modules.sh```
-
-Now you can load in the OpenMPI module
+Now you can load in the OpenMPI module, prepared as indicated by the [lmod utility]
 
 ```module load mpi/openmpi-x86_64```
 
@@ -36,3 +64,6 @@ $(function(){
 <div id="footer"></div>
 </body>
 </html>
+
+
+[lmod utility](https://gnulinux-handbook.adigecalculations.com/HPC/environment_management.html)

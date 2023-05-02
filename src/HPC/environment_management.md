@@ -3,9 +3,10 @@
 Often in HPC environments, the system is clogged with applications and libraries that cannot be all included at the same time into an exec path
 in a mantainable way. A way to include only the necessary portion to it is via the ```lmod``` utility:
 
-## LMOD (Environmental module system)
+## lmod (Environmental module system)
 
-LMOD provides a convenient way to dynamically change a user's environment through modulefiles.
+```lmod``` provides a convenient way to dynamically change a user's environment through modulefiles.
+
 -----------------------------------------------------------------------------------
 
 A modulefile contains the necessary information to allow a user to run a particular application or provide access to a particular library.
@@ -20,42 +21,50 @@ Check which modules are loaded into the system:
 
 ```sh
 module list
-module overview
 ```
 
 Check which module are available to the system:
 ```sh
 module avail
 ```
-For example, if the command is executed,
+To get an overview of the environment modifications, run:
 
 ```sh
-module show mpi
+module show <module_name>
 ```
 
-it will return what a modulefile is doing:
+### Adding modulefile
+
+To write a custom loadable environment you can add a ```modulefile```. These file must be present on MODULE_PATH following:
 
 ```sh
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   /usr/share/modulefiles/mpi/openmpi-x86_64:
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-conflict("mpi")
-prepend_path("PATH","/usr/lib64/openmpi/bin")
-prepend_path("LD_LIBRARY_PATH","/usr/lib64/openmpi/lib")
-prepend_path("PKG_CONFIG_PATH","/usr/lib64/openmpi/lib/pkgconfig")
-prepend_path("MANPATH",":/usr/share/man/openmpi-x86_64")
-setenv("MPI_BIN","/usr/lib64/openmpi/bin")
-setenv("MPI_SYSCONFIG","/etc/openmpi-x86_64")
-setenv("MPI_FORTRAN_MOD_DIR","/usr/lib64/gfortran/modules/openmpi")
-setenv("MPI_INCLUDE","/usr/include/openmpi-x86_64")
-setenv("MPI_LIB","/usr/lib64/openmpi/lib")
-setenv("MPI_MAN","/usr/share/man/openmpi-x86_64")
-setenv("MPI_PYTHON3_SITEARCH","/usr/lib64/python3.10/site-packages/openmpi")
-setenv("MPI_COMPILER","openmpi-x86_64")
-setenv("MPI_SUFFIX","_openmpi")
-setenv("MPI_HOME","/usr/lib64/openmpi")
+echo $MODULE_PATH 
+touch <module_path>/<modulefile_name>.lua
 ```
 
+The content of the modulefile you state should look similar to:
+
+```sh
+help([[
+For detailed instructions, go to:
+   https://...
+
+]])
+whatis("Version: 5.0.1")
+whatis("Keywords: System, Utility")
+whatis("URL: http://content.allinea.com/downloads/userguide.pdf")
+whatis("Description: Parallel, graphical, symbolic debugger")
+
+setenv(       "DDTPATH",        "/opt/apps/ddt/5.0.1/bin")
+prepend_path( "PATH",           "/opt/apps/ddt/5.0.1/bin")
+prepend_path( "LD_LIBRARY_PATH","/opt/apps/ddt/5.0.1/lib")
+```
+
+Loadable with:
+
+```sh
+module load <modulefile_name>
+```
 
 <!--  Script to show the footer   -->
 <html>
