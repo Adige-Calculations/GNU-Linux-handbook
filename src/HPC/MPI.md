@@ -1,6 +1,16 @@
 # MPI (Message Passage Interface)
 
-<b> MPI is a library. </b>  Applications can be written in C, C++ or Fortran and appropriate 
+MPI is a popular library for distributed-memory parallel programming
+in SPMD (single program, multiple data) style.
+
+MPI offers both point-to-point message passing and group communication
+operations (broadcast, scatter/gather, etc).
+
+Several implementations of MPI are available, both for networks of
+Unix workstations and for supercomputers with specialized communication
+networks.
+
+Applications can be written in C, C++ or Fortran and appropriate 
 calls to MPI can be added where required. Different implementation of the MPI protocol are 
 avaiable (OpenMPI, MPICH, InteMPI, etc...).
 
