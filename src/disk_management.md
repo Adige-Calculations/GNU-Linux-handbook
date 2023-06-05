@@ -16,7 +16,7 @@ du --human
 A good example on how to used the ```df``` utility is to check which root directory contains more data:
 
 ```sh
-du -h –max-depth=1 \ | sort -n
+du -h –max-depth=1 / | sort -n
 ```
 
 ## Enlarge the disk volume
