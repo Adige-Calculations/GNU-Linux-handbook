@@ -50,6 +50,16 @@ To enable  Wayland as a graphic protocol for GNOME to run on, modify the configu
 WaylandEnable=true
 ...
 ```
+```
+## Password on suspension wake up
+
+With GNOME you can enable/disable the password lock after suspension with:
+
+```sh
+dconf write /org/gnome/desktop/lockdown/disable-lock-screen false
+```
+
+Either with true or false 
 
 <!--  Script to show the footer   -->
 <html>

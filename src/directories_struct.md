@@ -5,18 +5,17 @@ Here are some common directories found within the root directory:
 
 | Root directory     | Description |
 | ------------------ | ----------- |
-| /bin               | binary: binary essential to the OS       |
+| /bin               | binary: conatins binaries essential to the OS       |
 | /etc               | etcetera: contains configuration files for the system and installed applications |
 | /sbin              | system binary: binary accessible only from the sudo user |
-| /usr               | user directory, all binary and files non essential to the OS |
-| /usr/bin           | binary non-essential for the OS
-| /usr/local         | binary compiled manually or installed without the system package manager |
+| /usr               | user directory, contains files (binaries/libraries/shared files/manuals) non essential to the OS |
+| /usr/local         | contains manually managed files, hence without using a package manager |
 | /boot              | contains files needed for booting the system, such as the kernel and boot loader. |
 | /dev               | device files, contains device files, which represent hardware devices on the system |
 | /opt               | optional |
-| /tmp               | temporary files |
+| /tmp               | temporary files, contains homonymous files |
 | /var               | variable, contains log and system generated file |
-| /lib               | library, contains library files, which are shared code that can be used by multiple programs.
+| /lib               | library, contains essential library files.
 | /procs             | virtual folder created by the kernel to take trace of the running process |
 
 <!--  Script to show the footer   -->
