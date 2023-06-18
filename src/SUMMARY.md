@@ -12,7 +12,6 @@
 - [Library](./libraries/libraries.md)
 	- [Libraries workflow](./libraries/library_workflows.md)
 	- [Library dependencies](./libraries/libraries_dependency_management.md)
-- [Packages](./packages/packages.md)
 - [Package management](./package_manager/pkg_management.md)
 	- [Package manager](./package_manager/pkg_manager.md)
 	- [Build software](./package_manager/build_software.md)

@@ -1,5 +1,13 @@
 # Package manager
 
+To understand the specific files and changes made by an APT package installation, 
+you can use the ```dpkg``` command (debian packages only), which is the underlying package management tool that APT utilizes.
+The ```dpkg``` command allows you to query information about installed packages, including their files, configuration details, and more.
+
+```sh
+dpkg -L <package_name>
+```
+
 
 <!--  Script to show the footer   -->
 <html>
