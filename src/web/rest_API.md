@@ -1,7 +1,9 @@
 # REST API
 
-A REST API (Representational State Transfer API) is a type of API that follows a set of architectural principles for building web services. 
-REST APIs use HTTP methods (such as GET, POST, PUT, DELETE) to define the operations that can be performed on resources. Each resource is 
+A REST API (Representational State Transfer API) is a type of API that follows 
+a set of architectural principles for building web services. 
+REST APIs use HTTP methods (such as GET, POST, PUT, DELETE) to define the operations 
+that can be performed on resources. Each resource is 
 identified by a unique URL, and the API defines the operations that can be performed on that resource and the data that can be exchanged.
 
 

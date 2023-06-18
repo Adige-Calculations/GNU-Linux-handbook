@@ -1,14 +1,23 @@
-# Init system & Services
+# Services and Init System
 
-System will be covered, which is the init programme present in the majority
-of the system out there.
+A service (or daemon), is an example of a process, but it has some additional properties:
+
+- It runs in the background in the sense that it has no direct interaction with the user
+- It is often started during bootup, or the first time the service is required, and after 
+that it often stays running indefinitely, it is never finished.
+- They are often used for events that might happen at any time and when they do, need handling
+of some kind. An example is the internet daemon, which handles incoming network traffic.
+
+The defacto standard GNU/Linux system for a system/service manager and initialization tool is 
+named ```systemd```.
 
 ## systemd
-Systemd is a system/service manager and initialization tool.
-Responsible for starting and managing system services. Often for a user, the interface
+
+```systemd``` is responsible for starting and managing services. Often for a user, the interface
 is the sevice management system via the ```systemctl``` utility.
 
 ### systemctl
+
 Is a command-line utility used to control the system service manager (responsible 
 for starting, stopping, and managing system services). systemctl can be used to start, stop, restart,
 enable, or disable services, as well as view the status and log files of those.
@@ -44,17 +53,16 @@ systemctl deamon-reload
 systemctl restart <service>.service
 ```
 
-### Services (or Deamons)
+## Instanciate services
 
-Usually, services run at boot and keep running in background,
-```systemd``` is the init system in mostly of the GNU/Linux distributions and it
-contains the majority of the service your machine will need to run properly.
-You can instantiate a new service to start at boot, storing the executable in
+Usually, system services run at boot and they keep running in background, to run the machine properly.
+You can instantiate a new service to start at boot, storing the executable in:
 
 ```sh
 /etc/init.d
 ```
 And then running the following:
+
 ```sh
 chkconfig –add <executable>
 chkconfig <exec> on

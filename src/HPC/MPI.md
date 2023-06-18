@@ -51,14 +51,13 @@ To install a packaged library:
 
 ```sudo dnf install openmpi openmpi-devel```
 
-Now you can load in the OpenMPI module, prepared as indicated by the [lmod utility]
+Now you can load in the OpenMPI module, prepared as indicated by the [lmod utility](https://gnulinux-handbook.adigecalculations.com/HPC/environment_management.html)
+
 
 ```module load mpi/openmpi-x86_64```
 
 With the module now loaded the system environment is modified, so you can use the compiler tools and runner. Do note that you’ll have to source and load the OpenMPI module
 for every shell you open unless you add it within ```$HOME/.bashrc```.
-
-[lmod utility](https://gnulinux-handbook.adigecalculations.com/HPC/environment_management.html)
 
 
 <!--  Script to show the footer   -->

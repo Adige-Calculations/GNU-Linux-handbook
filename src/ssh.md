@@ -1,15 +1,17 @@
 # SSH
 
-SSH (Secure Shell) is a network protocol that allows secure remote login and other secure network services over an unsecured network. It is commonly used to log into servers remotely, transfer files between systems, and execute commands on remote systems.
+SSH (Secure Shell) is a network protocol that allows secure remote login and other secure 
+network services over an unsecured network. It is commonly used to log into servers remotely,
+transfer files between systems, and execute commands on remote systems.
 
-To use SSH, you will need an SSH client and an SSH server. Before
+To use instanciate an SSH connection, you need an SSH client and the IP address of the SSH server. Before
 any connection take place, install the necessary packages on client:
 
 ```sh
 sudo apt install openssh-server net-tools
 ```
 
-## SSH config file
+## SSH service configuration
 
 You can find the configuration options at ```sudo vim /etc/ssh/sshd_config```. An option that should always be consider looking is:
 
@@ -17,10 +19,10 @@ You can find the configuration options at ```sudo vim /etc/ssh/sshd_config```. A
 port 22 
 ```
 
-Then ensure the deamon is running with these configurations:
+Then ensure the deamon is running, via [systemd](https://gnulinux-handbook.adigecalculations.com/systemd.html):
 
 ```sh
-system ssh start
+systemctl ssh start
 ```
 
 ## SSH tunnelling
@@ -45,6 +47,7 @@ Creta a brand new SSH keys pair:
 ```sh
 ssh-keygen -t ed25519 -C <your_email@example.com>
 ```
+
 This will genrate a key pair in ```~/.ssh```. However to make a public 
 key out of the private one (usually to reuse the key for different user of machines):
 
@@ -61,7 +64,7 @@ ssh-copy-id -i ~/path_to_key/<key> user@hostaname
 This will generate a ```.ssh/authorized_keys``` file with the credential filled for
 the specified user. Permitting the usage of the key instead of the password.
 
-## Automating connection
+## Automated connection
 
 Save the credential for automating access into ```~/.ssh/config```, and write a similar content to the following:
 

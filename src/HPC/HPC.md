@@ -35,7 +35,8 @@ addUsers <userName1> <userName2> <userName3> …
 addGroups sudo  # If your account has sudo privileges
 ```
 
-And to make reachable this user via ssh without rebooting the machine, restart the ssh service:
+And to make reachable this user via the SSH protocol without rebooting the machine, restart the SSH service:
+
 ``` sh
 sudo systemctl restart sshd
 ```
