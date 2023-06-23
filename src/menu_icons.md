@@ -3,7 +3,7 @@
 To add an icon into the menu, a ```.desktop``` file must be created usually at one of this location:
 
 - /usr/share/applications/```new icon```.desktop
--/usr/local/share/applications/```new icon```.desktop
+- /usr/local/share/applications/```new icon```.desktop
 
 Here it is an example of how to set the menu icon for ParaView, an open source data visualization application
 
@@ -18,11 +18,8 @@ Icon=/opt/ParaView-5.11.0-MPI-Linux-Python3.9-x86_64/share/paraview-5.11/web/gla
 StartupWMClass=paraview
 Categories=DataVisualization;
 ```
-This output should be visualized once you run:
+The icon will appear once the file is saved.
 
-```sh
-cat /usr/share/applications/org.paraview.ParaView.desktop
-```
 <!--  Script to show the footer   -->
 <html>
 <script
