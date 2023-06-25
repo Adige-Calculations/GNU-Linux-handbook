@@ -1,27 +1,41 @@
 # Disk management
 
-An analysis of the disk present in your machine can be done through the ```df``` utility, which
-report all file systems and their disk usage:
+Mounting a device refers to the process of associating a storage device or filesystem 
+with a specific directory (mount point) in the file system hierarchy. 
+By mounting a device, you make its contents accessible to the operating system and users.
+
+Storage devices such as hard drives, solid-state drives, USB drives, network shares, 
+and remote file systems are represented as device files. These device files are located 
+in the ```/dev``` directory and have names like ```/dev/sda```, or ```/dev/nvme0n1```.
+
+## Disk free (df) 
+
+Displaying all filesystems and their disk usage in human-readable form can be done through
+the ```df``` utility:
 
 ```sh
 df --human 
 ```
 
-Instead to estimate and summarize file and directory space usage, run the following:
+## Disk usage (du)
+
+Instead to estimate and summarize file and directory space usage, use the disk usage ```du```
+utility as follows:
 
 ``` sh
 du --human 
 ```
 
-A good example on how to used the ```df``` utility is to check which root directory contains more data:
+A common usage of the ```du``` utility is to check the root directory usage as follows:
 
 ```sh
-du -h –max-depth=1 / | sort -n
+du -h --max-depth=1 / | sort -n
 ```
 
-## Enlarge the disk volume
+# Enlarge the disk volume
 
-If allocated a new disk, run the following command to list all storage devices in a tree-like format:
+If allocated a new disk, run the following command to list all storage devices in a tree-like 
+format:
 
 ``` sh
 lsblk
@@ -34,6 +48,7 @@ sudo growpart /dev/nvme0n1 1
 lsblk
 sudo xfs_growfs -d /
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script

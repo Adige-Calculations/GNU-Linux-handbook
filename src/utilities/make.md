@@ -7,7 +7,8 @@ final_executable: main.c
 	$(CC) main.c -o final_executable -Wall -Wextra -pedantic -std=c99
 ```
 
-Where the first line says that ```final_executable``` is what we want to build, and that ```main.c``` is what is required to build it. The second line specifies the command to run in order to actually build ```final_executable``` out of ```main.c```.
+Where the first line says that ```final_executable``` is what we want to build, and ```main.c``` is required to be present to start 
+the build procedure. The second line specifies the command to run in order to actually build ```final_executable``` out of ```main.c```.
 Looking at the flags:
 
 ```sh
@@ -19,7 +20,7 @@ Looking at the flags:
 
 ## Makefile
 
-A dive in into the ```make``` utility is useful to understand the step to compile a library/programme. Another example is:
+A dive in into the ```make``` utility is useful to understand the step to compile a library/program. An example of a ```Makefile``` follows:
 
 ```makefile
 final_executable: libmymath.so main.o
@@ -38,8 +39,7 @@ clean:
 	rm -r main.o my_math.o
 ```
 
-There are lots of different makefile solutions which have cropped up over the years but a simple gmake
- might look like one:
+There are lots of different makefile solutions but a simple config might look like the follows:
 
 ```makefile
 SRCS = main.o mario_game.o sprites.o sfx.o
@@ -51,6 +51,19 @@ $(EXE): $(OBJS)
     $(CC) $(CFLAGS) -c $< -o $@
 ```
 
+### .PHONY
+
+The .PHONY target is a special target that is used to specify a list of phony targets.
+Phony targets are targets that do not represent actual files, but rather represent an action or command that needs to be executed.
+
+```makefile
+.PHONY: clean
+
+clean:
+    rm -rf *.o
+```
+
+On the above example, ```clean``` is declared a phony target, and it will be always executed regardless if a file name ```clean``` exist.
 
 <!--  Script to show the footer   -->
 <html>
