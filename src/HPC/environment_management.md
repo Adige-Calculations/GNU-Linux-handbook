@@ -38,8 +38,7 @@ module show <module_name>
 To write a custom loadable environment you can add a ```modulefile```. These file must be present on MODULE_PATH following:
 
 ```sh
-echo $MODULE_PATH 
-touch <module_path>/<modulefile_name>.lua
+touch $MODULE_PATH/<modulefile_name>.lua
 ```
 
 The content of the modulefile you state should look similar to:

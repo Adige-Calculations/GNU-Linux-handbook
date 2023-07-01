@@ -31,6 +31,7 @@
 - [Licence server](./license_server.md)
 - [Utilities](./utilities/START_CHAPTER.md) 
     - [Git](./utilities/git.md)
+    - [Conda](./utilities/conda.md)
     - [Make](./utilities/make.md)
     - [Web server](./utilities/web_server.md)
     - [Database](./utilities/database.md)
