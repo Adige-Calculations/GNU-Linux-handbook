@@ -1,12 +1,46 @@
 # Shell scripting
 
-First line to initialize shell script is:
+The first line to initialize shell script tells at the system which shell 
+environment has to be used. The following code snippet calls a ```bash``` interpreter.
 
-```bash
+```sh
 #!/bin/bash
+
+... # bash code
 ```
 
-## Variables
+This code can be sourced and execuded.
+
+
+When we call ```source``` we means that the contents of 
+the file are read and executed in the current shell environment. 
+```source``` is designed to work with shell scripts (such as those written in bash)
+and not directly with scripts written in other languages like Python.
+
+While when we execute
+we mean to run a separate process with its own environment.
+
+As example, the following call a python interpreter:
+
+```sh
+#! /usr/bin/python
+
+... # pyhton code 
+```
+
+And it can only be executed, not sourced.
+
+When you try to use the ```source``` utility on a shell script that has Python code, it will 
+likely result in a syntax error because the Python interpreter does not understand the 
+source command or the shell-specific syntax used in the script.
+
+To summarize, execution runs a script or command as a separate process, while sourcing reads
+and executes the contents of a file in the current shell session, allowing the changes to 
+directly affect the current environment.
+
+## Shell variables
+
+Regarding a shell script written in bash, variables can be expressed as:
 
 ```sh
 name="John"
@@ -24,6 +58,9 @@ cp -$options $wildcard /tmp
 ```
 
 ## String quotes
+
+String quotes have different effect on how the text is interpreted.
+
 ``` sh
 name="John"
 echo "Hi $name"  #=> Hi John
