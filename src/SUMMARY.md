@@ -12,6 +12,7 @@
 - [Library](./libraries/START_CHAPTER.md)
 	- [Libraries workflow](./libraries/library_workflows.md)
 	- [Library dependencies](./libraries/libraries_dependency_management.md)
+	- [Python libraries](./libraries/py_library.md)
 - [Package management](./package_manager/pkg_management.md)
 	- [Package manager](./package_manager/pkg_manager.md)
 	- [Build software](./package_manager/build_software.md)

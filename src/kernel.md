@@ -1,3 +1,27 @@
+# OS Kernel
+
+The kernel takes care of recognizing hardware, networking perifericals and setting up the CPU register, memory and file system.
+ 
+The kernel is loaded into memory during the boot process and initializes the essential components of 
+the system, such as hardware devices, memory management, and file systems.
+
+Once the kernel is loaded, it start the first process of the machine namely the init service, responsible 
+for starting and managing other processes in the system.
+
+To check what the kernel is loading after booting, follow a simlar command to parse the first of the 
+process:
+
+```sh
+ps -ef > process_list && head -n 2 process_list
+```
+
+Which will return a similar result if you are using ```systemd``` as your init system.
+
+```sh
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 11:46 ?        00:00:02 /usr/lib/systemd/systemd rhgb --switched-root --system --deserialize=35
+```
+
 ## Find the current kernel version
 
 The ```uname``` utility print information about the machine and operating system is running:
@@ -5,12 +29,14 @@ The ```uname``` utility print information about the machine and operating system
 ```sh
 uname -r      # -r stands for --kernel-release
 ```
+
 ## List all installed kernels
 Use the rpm command or dpkg command on the terminal:
 
 ```sh
 rpm -q kernel
 ```
+
 ## Remove all old kernels
 Do not remove the kernel the system is currently running. These examples may result into unstable system if not executed with care. Do not remove the kernel the system is currently running.
 Choose which kernel you want to uninstall from the list of those installed. Type the following command to remove the kernel package under RHEL / CentOS / Fedora Linux:
