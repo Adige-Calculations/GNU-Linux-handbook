@@ -1,7 +1,8 @@
 # Processes
 
 A process is an instance of a particular executable program running.
-A process can communicate with other devices or services through a network port.
+A process can communicate with other devices or services through a network port, moreover it can create other 
+processes which are known as "Child Processes".
 
 The main utilities to investigate processes are shown below:
 
@@ -34,15 +35,12 @@ Which will returning this table header:
 State      Recv-Q Send-Q      Local Address:Port       Peer Address:Port
 ```
 
-<b>Recv-Q </b>: This field represents the amount of data that is currently in the receiving queue (buffer) of the socket. It indicates the number of bytes that have been received by the socket but not yet read by the application.
+- <b>Recv-Q </b>: This field represents the amount of data that is currently in the receiving queue (buffer) of the socket. It indicates the number of bytes that have been received by the socket but not yet read by the application.
+- <b>Send-Q </b>: This field represents the amount of data that is currently in the sending queue (buffer) of the socket. It indicates the number of bytes that have been sent by the application but not yet acknowledged by the remote peer.
+- <b>Local Address:Port </b>: This field represents the local network address and port number associated with the socket. The local address refers to the network interface on the local machine that the socket is bound to. The port number is a unique identifier that allows multiple connections to exist simultaneously on a single machine.
+- <b>Peer Address:Port </b>: This field represents the network address and port number of the remote peer (the other end of the connection) that the socket is connected to. It identifies the destination or source of the connection.
 
-<b>Send-Q </b>: This field represents the amount of data that is currently in the sending queue (buffer) of the socket. It indicates the number of bytes that have been sent by the application but not yet acknowledged by the remote peer.
-
-<b>Local Address:Port </b>: This field represents the local network address and port number associated with the socket. The local address refers to the network interface on the local machine that the socket is bound to. The port number is a unique identifier that allows multiple connections to exist simultaneously on a single machine.
-
-<b>Peer Address:Port </b>: This field represents the network address and port number of the remote peer (the other end of the connection) that the socket is connected to. It identifies the destination or source of the connection.
-
-Commonly used in conjuction with the ```grep``` command
+Commonly used in conjuction with the ```grep``` command:
 
 ```sh
 sudo ss -lptn | grep <processDescriptionOrPort>
@@ -68,6 +66,30 @@ The signals you can send are:
 - 9 — KILL (non-catchable, non-ignorable kill)
 - 14 — ALRM (alarm clock)
 - 15 — TERM (software termination signal)
+
+# Threads
+
+Processes are binaries instructions that are dispatched from the ready state and scheduled in the CPU for execution.
+The PCB(Process Control Block) holds the concept of process. The process takes more time to terminate and it is isolated 
+means it does not share the memory with any other process. 
+
+The process can have the following states:
+- new
+- ready
+- running
+- waiting
+- terminated
+- suspended 
+
+Meanwhile, a thread is the segment of a process which means a process can have multiple threads and these multiple 
+threads are contained within a process. A thread has three states:
+
+- new
+- runnable 
+- blocked (this state do not use any cpu) 
+- terminated
+
+The thread takes less time to terminate as compared to the process but unlike the process, threads do not isolate memory. 
 
 
 <!--  Script to show the footer   -->

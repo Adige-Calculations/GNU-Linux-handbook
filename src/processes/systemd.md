@@ -2,7 +2,7 @@
 
 A service (or daemon), is an example of a process, but it has some additional properties:
 
-- It runs in the background in the sense that it has no direct interaction with the user
+- It runs in the background, in the sense that it has no direct interaction with the user
 - It is often started during bootup, or the first time the service is required, and after 
 that it often stays running indefinitely, it is never finished.
 - They are often used for events that might happen at any time and when they do, need handling
