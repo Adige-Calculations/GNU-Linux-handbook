@@ -1,9 +1,8 @@
-## Git
+# Git
 
-Git is a programme which permit to share project and contribute in open
-source manner. The usual work frame is to download (clone in git
-language) the code, apport modification and upload the code (push in git
-language). T
+Git is a programme which permit to share and contribute to project. The usual 
+workflow is to download (```clone``` in the git jargon) the code, apport 
+modification and upload the code (```push``` in git language). 
 
 If you already have a git server, configure the client running:
 
@@ -12,6 +11,7 @@ git config --global user.email "<yourEmail>"
 # Otherwise you can configure the account with your usernam 
 git config --global user.name "<yourName>"
 ```
+
 ### Get a repository from server 
 
 Once cloned the repository you are interest with on your local device:
@@ -45,12 +45,14 @@ Look at the local branches in your repository:
 ```sh
 git branch
 ```
+
 To see all other branches hiding in your repository and you can use the
 --all/-a flag.
 
 ```sh
 git branch --all
 ```
+
 If you just want to take a quick peek at an upstream branch, you can use
 a 'detached HEAD' state. You can look around, make experimental changes
 and commit them, and you can discard any commits you make in this state

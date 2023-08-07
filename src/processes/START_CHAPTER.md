@@ -18,7 +18,12 @@ To report a snapshot of the current processes use:
 ps -ef
 ```
 
-It scan all processes that are running on your system (processes use/don's use a network port)
+It scan all processes that are running on your system (not all processes use a network port). To check processes by name
+the following utilts will return the process ID:
+
+```
+pgrep <process_name>
+```
 
 ## Manage process sockets
 

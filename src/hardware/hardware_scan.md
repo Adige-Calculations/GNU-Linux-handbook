@@ -5,17 +5,22 @@ Specs of your CPU
 ```sh
 lscpu 
 ```
+
 Return the architecture of the CPU
 
 ```sh
 uname -m 
 ```
+
 ## Bluetooth peripherical installation
 
-To connect a Bluetooth device, use systemd a service:
-```
+To connect a Bluetooth device, use a ```systemd``` shortcut to manage the bluetooth
+control service:
+
+```sh
 sudo bluetoothctl
 ```
+
 Then: 
 
 ```sh

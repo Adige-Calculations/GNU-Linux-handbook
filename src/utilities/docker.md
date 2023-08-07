@@ -1,7 +1,7 @@
 # Docker
 
-Docker is an open-source software project automating the deployment of applications inside software containers.
-It works with images and container, the main difference between this two is:
+Docker is a software that automate the deployment of applications inside containers.
+It works with images and container, the main difference between these two follwos:
 
 - An image is piece of memory with the os and applicaiton data inside
 - A container instead is a running image
@@ -13,6 +13,7 @@ docker system df  # use -v to get further informations
 ```
 
 ## System images
+
 An image becomes a container when you execute it. Check the images that are present in your system after the build
 docker images, the command to build an image is:
 
@@ -143,6 +144,36 @@ to clean the system cache:
 
 ```sh
 docker system prune -a -f
+```
+
+# Docker compose 
+
+Docker Compose is a tool for running multi-container applications on Docker defined using
+the Compose file format. A Compose file is used to define how one or more containers that 
+make up your application are configured, such as:
+
+```yml
+version: '3.4'
+
+services:
+  restsvr:
+    image: imageName
+    ports:
+      - 443:8000      # HOST / CONTAINER
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
+```
+Once you have a Compose file, you can create and start your application with a single command:
+
+```sh
+docker-compose up --build -d
 ```
 
 <!--  Script to show the footer   -->

@@ -1,15 +1,14 @@
 # Web server
 
-A web server is a computer program that serves web pages to clients on the web.
-When a client, such as a web browser, makes a request to a web server for a web page,
-the web server sends the requested page back to the client.
+A web server is a program that serves web pages to clients through web request.
+When a client, such as a web browser, makes a request to a web server, the latter sends 
+the requested packages back to the client.
 
-Web servers can be set up on a computer to host a website, and they are often used to
+Web servers can be set up to host a website, and they are often used to
 store and manage the files that make up a website, as well as to process requests from
-clients and serve the appropriate files or data in response. Web servers can be configured
-to handle different types of requests, such as serving static or dynamic pages.
+clients and serve appropriate files or data in response.
 
-## Web server with Python modules
+## Python https module
 
 Using the ```http.server``` module, running the following command in a terminal:
 
@@ -17,20 +16,19 @@ Using the ```http.server``` module, running the following command in a terminal:
 python -m http.server
 ```
 
-This will start the HTTP server on your local machine and listen for incoming requests 
+This will start an HTTP server on your local machine and listen for incoming requests 
 on port 8000.
 
 ## Nginx 
 
-Install nginx, which is a web server that serve the http pages given the
-http/https request
+The following install ``` nginx```, which is a web server that runs as a deamon.
 
 ```sh
 sudo dnf install nginx
 ```
 
-This install a deamon, which is driven by systemd service management system; using ```systemctl``` the service
-can be controlled in several different ways:
+Nginx is managed by service management system (systemd) hence using the ```systemctl``` utility
+nginx can be controlled in several different ways. Such as:
 
 ``` sh
 sudo systemctl <systemctlAction> nginx
@@ -38,17 +36,14 @@ sudo systemctl <systemctlAction> nginx
 
 ### Nginx settings
 
-You can read how ```nginx``` is going to work reading inside ```/etc/nginx/nginx.conf```
+Setting how ```nginx``` is going to work is done though ```/etc/nginx/nginx.conf```
 Then prepare a config file to serve you site, using as a base a config file already present in ``` /etc/nginx/conf.d ```.
-Adding a new .conf file and restarting the service, you should have your website served:
+Adding a new <website>.conf file and restarting the service:
 
 ``` sh
 sudo vi /etc/nginx/conf.d/<yourWebsiteConfigFile>.conf
 sudo systemctl restart nginx
 ``` 
-
-Remember to put .conf as extension of the file. As a good practice, websites are
-stored in ```/var/www/html```
 
 As an example of a config file, pointing to an html file to be served:
 
@@ -82,6 +77,11 @@ server {
 }
 ```
 
+Verify the syntax of your configuration edits with:
+
+``` sh
+sudo nginx -t
+```
 Next, an example on how to insert reverse proxy to an internal working webserver listening at port 8000:
 
 ```sh
@@ -126,8 +126,7 @@ The first step to using Let’s Encrypt to obtain an SSL certificate is to insta
 ```certbot``` software on your server. You can obtain the certbot-nginx package by typing:
 
 ``` sh
-# Cent-OS package manager
-sudo yum install certbot-nginx
+sudo dnf install certbot-nginx
 ```
 
 ### Set/Grub Nginx addresses
@@ -140,12 +139,6 @@ Find the existing server_name line in ```/etc/nginx/nginx.conf``` such as:
 
 ``` sh
 server_name adigecalculations.com www.adigecalculations.com;
-```
-
-Verify the syntax of your configuration edits with:
-
-``` sh
-sudo nginx -t
 ```
 
 If that runs with no errors, reload Nginx to load the new configuration:
@@ -200,12 +193,10 @@ Your certificates are downloaded, installed, and loaded.
 
 ### Setting Up Auto Renewal
 
-Let’s Encrypt’s certificates are only valid for ninety days. This is to encourage 
-users to automate their certificate renewal process. We’ll need to set up a regularly
-run command to check for expiring certificates and renew them automatically.
+Let’s Encrypt’s certificates are only valid for 90 days. 
 
-To run the renewal-check daily, we will use cron, a standard system service for running
-periodic jobs. We tell cron what to do by opening and editing a file called a crontab.
+To run the renewal-check daily, we will use ```cron```, a standard system service for running
+periodic jobs. Editing a file called a crontab.
 
 ```sh
 sudo crontab -e
@@ -220,9 +211,14 @@ The default ```crontab``` config file will open. Paste in the following line:
 The 15 3 * * * part of this line means “run the following command at 3:15 am, every day”.
 
 The renew command for ```certbot``` will check all certificates installed on the system
-and update any that are set to expire in less than thirty days. --quiet tells Certbot not
-to output information or wait for user input.
+and update any that are set to expire in less than thirty days. The ```--quiet``` flag 
+tells Certbot not to output information or wait for user input.
 
+To check that all is set up:
+
+```sh
+crontab -l
+```
 
 All installed certificates will be automatically renewed and reloaded when they have thirty
 days or less before they expire.
