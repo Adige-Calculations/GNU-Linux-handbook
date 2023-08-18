@@ -11,14 +11,9 @@ any connection take place, install the necessary packages on client:
 sudo apt install openssh-server net-tools
 ```
 
-## SSH service configuration
+## Configuration
 
-You can find the configuration options at ```sudo vim /etc/ssh/sshd_config```. An option that should always be consider looking is:
-
-``` sh
-port 22 
-```
-
+You can find the configurations of the service at ```sudo vim /etc/ssh/sshd_config```. An option to always check is: ```port 22```. 
 Then ensure the deamon is running, via [systemd](https://gnulinux-handbook.adigecalculations.com/systemd.html):
 
 ```sh
@@ -61,6 +56,7 @@ the credential:
 ```sh
 ssh-copy-id -i ~/path_to_key/<key> user@hostaname
 ```
+
 This will generate a ```.ssh/authorized_keys``` file with the credential filled for
 the specified user. Permitting the usage of the key instead of the password.
 
