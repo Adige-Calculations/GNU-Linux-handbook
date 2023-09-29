@@ -7,12 +7,19 @@ on the same system.
 
 ## spack
 
-Designed for large supercomputing centers, where users share common installations of 
-software with exotic architectures, using libraries that do not have a standard  
-Application Binary Interface (ABI). To install the application:
+Designed for HPCs, where users share common installations of 
+software with exotic architectures, using libraries that do not 
+have a standard Application Binary Interface (ABI). To install it follwows:
 
 ```sh
-source ~/spack/share/spack/setup-env.sh
+git clone https://github.com/spack/spack.git
+source ~/spack/share/spack/setup-env.sh  # Shell support for bash/zsh
+```
+Sourcing these files will put the spack command in your ```PATH```, set up your 
+```MODULEPATH``` to use Spack's packages, and add other useful shell integration 
+for certain commands, environments, and modules. To install an application (i.g. ```gcc```):
+
+```sh
 spack info gcc
 spack install gcc@12.1.0
 ```

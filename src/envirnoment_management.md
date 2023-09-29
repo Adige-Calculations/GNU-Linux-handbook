@@ -3,12 +3,26 @@
 As environment configuration, it is intened the binary path, library path configuration, plus 
 environment variable saved in the machine state.
 
-## Binary/Library path modification
+## Binary path modification 
 
-Execution path and library location path are essential address to permit the system to find
-a programme or a shared library. To see where the machine is looking for a library:
+The execution path is essential to permit the system to find the executables in the disks. 
 
+```sh
+echo $PATH
 ```
+
+To modify it run:
+
+```sh
+export PATH="/home/$USER/new/bin/location:$PATH"
+```
+
+## Library path modification
+
+As per the execution path, the library location path can be identified and modified at occurrence. 
+To see where the machine is looking for a library:
+
+```sh
 echo $LD_LIBRARY_PATH
 ```
 
@@ -17,6 +31,7 @@ To add a custom path run for a new library location run:
 ```sh
 export LD_LIBRARY_PATH="/path/to/new/lib_newlibrary:$LD_LIBRARY_PATH"
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script
