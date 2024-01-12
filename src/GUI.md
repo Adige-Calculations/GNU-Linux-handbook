@@ -1,8 +1,7 @@
 # GUI
 
-A graphical user interface (GUI) is a type of user interface that allows users to interact with 
-a computer or device using visual elements such as icons, buttons, and windows. A GUI makes it 
-easier for users to perform tasks by clicking on buttons or selecting options from menus, rather 
+A Graphical User Interface (GUI) is a programme that allows users to interact  using visual elements such as icons, buttons, and windows. A GUI makes it 
+easier to perform tasks by clicking on buttons or selecting options from menus, rather 
 than having to type commands or navigate a command-line interface.
 
 Setting the system to be a multiuser as default:
