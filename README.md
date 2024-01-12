@@ -18,7 +18,7 @@
 
 ## About
 
-This repo contains documentation on using GNU/Linux system, common workflows, how
+This repo contains documentation on using GNU/Linux systems, common workflows, how
 to get started and more as you dive deeper. It acts as a guide for doing some really neat things.
 However, keep in mind it should be seen as a co-pilot for your workflow, instead of a place to study on.
 
