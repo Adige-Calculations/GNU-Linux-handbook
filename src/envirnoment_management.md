@@ -26,10 +26,16 @@ To see where the machine is looking for a library:
 echo $LD_LIBRARY_PATH
 ```
 
+while for the execution path check:
+
+```sh
+echo $PATH
+```
+
 To add a custom path run for a new library location run:
 
 ```sh
-export LD_LIBRARY_PATH="/path/to/new/lib_newlibrary:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/path/to/newlibrary:$LD_LIBRARY_PATH"
 ```
 
 <!--  Script to show the footer   -->

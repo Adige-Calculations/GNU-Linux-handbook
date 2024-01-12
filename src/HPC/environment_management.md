@@ -1,7 +1,7 @@
 # Environment management
 
-Often in HPC environments, the system is clogged with applications and libraries that cannot be all included at the same time into an exec path
-in a mantainable way. A way to include only the necessary portion to it is via the ```lmod``` utility:
+Especially in HPC environments, the system is clogged with applications and libraries that cannot be all included at the same
+time into an environment path in a mantainable way. A way to include only a necessary portion of paths is via the ```lmod``` utility:
 
 ## lmod (Environmental module system)
 

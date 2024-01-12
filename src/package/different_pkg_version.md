@@ -27,7 +27,6 @@ spack install gcc@12.1.0
 Then to run the app follow:
 
 ```sh
-source ~/spack/share/spack/setup-env.sh
 spack load gcc@12.1.0
 gcc --version
 ```

@@ -10,9 +10,15 @@ Network interfaces are the physical or logical connections that allow a device t
 You can use the ```ifconfig``` or ```ip``` utility to view and configure network interfaces.
 
 ### Managing network connections:  
+
 ----------------------------------------------------------------------------------------------------
-You can use the ```nmcli``` or ```nm-applet``` command to manage and create network connections in Linux. 
+You can use the ```nmcli``` command to manage and create network connections in Linux. 
 These commands allow you to configure the network settings for various types of connections, such as Ethernet, WiFi, and VPN.
+
+```sh
+nmcli connection show
+```
+The command above will list the actual connection of your machine
 
 ### Viewing network statistics:  
 ----------------------------------------------------------------------------------------------------

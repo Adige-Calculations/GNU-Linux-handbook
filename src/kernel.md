@@ -1,11 +1,12 @@
 # OS Kernel
 
-The kernel takes care of recognizing hardware, networking perifericals and setting up the CPU register, memory and file system.
+The kernel takes care of recognizing hardware, networking perifericals and setting up the CPU registers, 
+memory and file system.
  
-The kernel is loaded into memory during the boot process and initializes the essential components of 
-the system, such as hardware devices, memory management, and file systems.
+The kernel is loaded into memory during the boot process (GRUB direct your CPU at the address at which the 
+kernel is stored) and initializes it..
 
-Once the kernel is loaded, it start the first process of the machine namely the init service, responsible 
+After the kernel is loaded, it start the first process of the machine namely the init service, responsible 
 for starting and managing other processes in the system.
 
 To check what the kernel is loading after booting, follow a simlar command to parse the first of the 
@@ -31,24 +32,43 @@ uname -r      # -r stands for --kernel-release
 ```
 
 ## List all installed kernels
-Use the rpm command or dpkg command on the terminal:
+
+Use the ```rpm``` command or ```dpkg``` command on the terminal:
 
 ```sh
 rpm -q kernel
 ```
 
-## Remove all old kernels
-Do not remove the kernel the system is currently running. These examples may result into unstable system if not executed with care. Do not remove the kernel the system is currently running.
-Choose which kernel you want to uninstall from the list of those installed. Type the following command to remove the kernel package under RHEL / CentOS / Fedora Linux:
+## Remove old kernels
+
+Do not remove the kernel the system is currently running. These examples may result into unstable system if not executed with care. 
+Choose which kernel you want to uninstall from the list of those installed. Type the following command to remove the kernel package 
+under RHEL/CentOS/Fedora Linux:
 
 ```sh
 rpm -e kernel-2.6.12-1.el5
 ```
-Please note that on newer system all obsolete kernels and headers should automatically be flagged as no more needed, and thus can be purged with the following single command:
+Please note that on newer system all obsolete kernels and headers should automatically be flagged as no more needed, and thus can be 
+purged with the following single command:
 
 ```sh
 sudo dnf autoremove
 ```
+## Change the default kernel
+
+If you experience problems with the latest kernel you can rollback to a previous one (usually your system store more than 
+one in the disks at ```/boot```). Telling ```grub``` to point into a different location in memory, i.g.
+
+```sh
+sudo grubby --info=ALL | grep -E "^kernel|^index"
+```
+
+From the output above select one index and the use it as follows:
+
+```sh
+sudo grubby --set-default-index=1
+```
+
 <!--  Script to show the footer   -->
 <html>
 <script

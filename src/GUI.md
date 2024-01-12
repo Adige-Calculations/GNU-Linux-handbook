@@ -13,19 +13,13 @@ sudo systemctl set-default multi-user
 
 ## GNOME
 
-Install the GUI:
-
-```sh 
-sudo systemctl start gdm3 
-```
-
-Check the verison:
+Check the package version:
 
 ```
 gnome-shell --version
 ```
 
-Enable the GUI:
+Set a graphical deamon as default:
 
 ```sh
 sudo systemctl set-default graphical
