@@ -1,15 +1,14 @@
 # Git
 
-Git is a programme which permit to share and contribute to project. The usual 
+Git is a programme that does version control on code bases. The usual 
 workflow is to download (```clone``` in the git jargon) the code, apport 
-modification and upload the code (```push``` in git language). 
+modification (```commit```) and upload the code (```push```). 
 
 If you already have a git server, configure the client running:
 
 ```sh
 git config --global user.email "<yourEmail>"
-# Otherwise you can configure the account with your usernam 
-git config --global user.name "<yourName>"
+git config --global user.name "<yourName>"   # Otherwise you can configure the account with your username 
 ```
 
 ### Get a repository from server 
@@ -17,13 +16,10 @@ git config --global user.name "<yourName>"
 Once cloned the repository you are interest with on your local device:
 
 ```sh
-# Using the SSH protocol, you must have a key the access the repository
-git clone <sshAddress>
-# or you can use the https protocol
-git clone <repositoryUrl>
+git clone <sshAddress>  # Or repo URL
 ```
-
-With an existing repository, to get new remote code run:
+Using the SSH protocol, you must have a key the access the repository if the repository is private.
+To get the last version of the remote code, run:
 
 ```sh
 git pull
@@ -53,18 +49,8 @@ To see all other branches hiding in your repository and you can use the
 git branch --all
 ```
 
-If you just want to take a quick peek at an upstream branch, you can use
-a 'detached HEAD' state. You can look around, make experimental changes
-and commit them, and you can discard any commits you make in this state
-without impacting any branches by switching back to a branch. With the
-command:
-
-```sh
-git checkout <wholePathToTheBranch>
-```
-
-But if you want to work on that branch, you'll need to create a local
-tracking branch which is done automatically by:
+If you want to work on a specific branch, you'll need to create a local
+tracking branch which is done by:
 
 ```sh
 git checkout <branchName>
@@ -91,6 +77,7 @@ git stash pop
 ```
 
 ### Add code
+
 Add some code and then do a commit into the base level of the
 repository. Stages all changes:
 
@@ -110,28 +97,6 @@ git commit -m “comment”
 A commit file will appear where you need to make visible the changes you
 want to commission.
 
-### Merge branches
-
-If you are in the ```main``` branch, run:
-
-```sh
-git merge <dev-branch-name>
-```
-To merge the dev-branch modification into main.
-
-### Push
-
-Then push the directory to add the files on the online repository:
-```sh
-git push
-```
-if your branch is new, set a seed in the remote branch to upload the new
-files:
-
-```sh
-git push --set-upstream origin <branchName>
-```
-
 ### Manage branches
 
 To create a new branch, execute the following:
@@ -149,7 +114,7 @@ git push -d <remoteBranchName> <branch_name>
 git branch -d <localBranchName>
 ```
 
-the **remote_name** usually is: **origin**
+the **remote_name** is usually: **origin**
 
 # Contribute to a project - GitHub 
 
@@ -164,7 +129,7 @@ The overall process should look somewhat like this:
 3. Create a feature branch, e.g. named after the command you plan to edit:
   `git checkout -b branch_name`
 
-  > :warning: It is bad practice to submit a pull request from the `main` branch of your forked repository.
+> It is bad practice to submit a pull request from the `main` branch of your forked repository.
 
 4. Make your changes
 
@@ -174,10 +139,9 @@ The overall process should look somewhat like this:
 6. Push the commit(s) to your fork:
   `git push origin branch_name`
 
-  > :warning: Please avoid force-pushing since it makes the review process harder.
+> Please avoid force-pushing since it makes the review process harder.
 
 7. Go to the GitHub page for your fork and click the green "Compare & pull request" button.
-
 
 ## GitHub SSH keys
 
