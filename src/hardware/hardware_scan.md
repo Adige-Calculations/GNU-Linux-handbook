@@ -12,6 +12,8 @@ Return the architecture of the CPU
 uname -m 
 ```
 
+where ```aarch64``` stands for ARM64.
+
 ## Bluetooth peripherical installation
 
 To connect a Bluetooth device, use a ```systemd``` shortcut to manage the bluetooth
