@@ -19,8 +19,6 @@
 - [Package](./package/pkg_management.md)
 	- [Not managed packages](./package/not_managed_packages.md)
 	- [Different package version](./package/different_pkg_version.md)
-- [GUI](./GUI.md)
-    - [Menu icons](./menu_icons.md)
 - [Processes](./processes/START_CHAPTER.md)
     - [Inizialization and service management](./processes/systemd.md)
 - [Networking](./network/START_CHAPTER.md)
@@ -42,4 +40,5 @@
     - [Contenarization](./utilities/docker.md)
     - [Benchmarking/Debug](./utilities/benchmark.md)
     <!-- - [Database](./utilities/database.md) -->
+- [Usage of menu icons](./menu_icons.md)
 - [Cross compilation](./cross_compilation.md)
