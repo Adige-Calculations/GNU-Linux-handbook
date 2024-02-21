@@ -3,9 +3,9 @@
 A mention to the GNU C Compiler (```gcc```) is worthwhile. Therefore we few basic source file to 
 explain few concepts.
 
-### File generation
+### Source files
 
-Working from ```~```, create a ```~/add.c``` file such as:
+Create a ``` touch ~/add.c``` file such as:
 
 ```c
 #include "add.h"
@@ -14,10 +14,11 @@ double add(double a, double b) {
 	return(a + b)
 }
 ```
-With coupled an headerfile ```~/add.h```
+
+With an associated header file:
 
 ```sh
-echo "double add(double x, double y);" > add.h
+echo "double add(double x, double y);" > ~/add.h
 ```
 
 and a main source file ```main.c``` like
@@ -29,26 +30,34 @@ and a main source file ```main.c``` like
 double addition_result = add(double 1., double 2.)
 printf("The additon result is: %d \n", addition_result);
 ```
-# Compilation procedure
+
+## Compilation procedure
 
 Compilers first transform all the program's source code files into  object ```.o``` files.
 The compiler then links the compiled object files into an executable file.
 
-### .o - Object file
+An example is shown below that address the compiler to include header files at the 
+set location (```-I```), libraries names (```-l```) located at a give location (```-L```)
+
+```sh
+gcc path/to/source.cpp -o ouputName -Ipath/to/header/directory -Lpath/to/library -llibrary_name
+```
+
+### .o - Object file generation
 
 An ```.o``` file is a compiled C program object. Some C compilers create ```.o``` files during the executable creation process. ```.o``` files themselves are typically not executable.
 
 ## Create and use a static library
 
-Then treat this library file (```~/add.c```) as a common source file:
+Then treat ```~/add.c``` as a source file of the library:
 
 ```sh
 gcc -c add.cpp -o add.o
 ```
 
-The -c flag is indicating that you want to compile but not link the file to anything else.
+The ```-c``` flag is indicating that you want to compile but not link the file to anything else.
 
-### Wrap the output file as a static library.
+### Wrap the object as a static library.
 
 In Linux/GNU systems, it involves using the ```ar``` application (an archive utility tool) to create the static library file (.a : archive file)
 such as:
@@ -109,6 +118,29 @@ Create the executable:
 ```sh
 gcc main.o -L. -lmymath -o final_executable
 ```
+
+### Position independent code 
+
+In this example:
+
+```mylibrary.so``` is the name of the output shared library.
+```mysource1.c``` is the source file you want to compile.
+
+```sh
+gcc -shared -fPIC -o ouputName.so mysource1.c -lmylib -L/path/to/library
+```
+
+The first two flags stands for: 
+
+- shared: instructs GCC to create a shared library instead of an executable.
+- fPIC: This stands for "Position Independent Code."
+
+When creating shared libraries, it's crucial to 
+generate position-independent code because the library can be loaded into any part of the address 
+space at runtime. ```-fPIC``` ensures that the generated code does not depend on a fixed memory 
+location, making it suitable for dynamic linking.
+
+
 
 <!--  Script to show the footer   -->
 <html>

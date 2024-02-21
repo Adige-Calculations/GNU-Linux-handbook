@@ -15,7 +15,7 @@ that is needed by multiple programs, such as system functions, graphical user in
 connectivity libraries. In Unix like system, dynamic libraries have the file extension .so (shared object), while in 
 Windows they have the extension .dll (dynamic-link library).
 
-## Advantages and Limitations
+## Advantages and Limitations of Shared library
 
 Dynamic libraries have several advantages over static libraries:
 
