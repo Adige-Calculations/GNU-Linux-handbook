@@ -4,7 +4,7 @@ The kernel takes care of recognizing hardware, networking perifericals and setti
 memory and file system.
  
 The kernel is loaded into memory during the boot process (GRUB direct your CPU at the address at which the 
-kernel is stored) and initializes it..
+kernel is stored) and initializes it.
 
 After the kernel is loaded, it start the first process of the machine namely the init service, responsible 
 for starting and managing other processes in the system.
@@ -54,6 +54,7 @@ purged with the following single command:
 ```sh
 sudo dnf autoremove
 ```
+
 ## Change the default kernel
 
 If you experience problems with the latest kernel you can rollback to a previous one (usually your system store more than 
