@@ -9,16 +9,20 @@ environment has to be used. The following code snippet calls a ```bash``` interp
 ... # bash code
 ```
 
-This code can be sourced and execuded.
+This code can be either sourced or execuded.
 
+### source 
 
 When we call ```source``` we means that the contents of 
 the file are read and executed in the current shell environment. 
 ```source``` is designed to work with shell scripts (such as those written in bash)
 and not directly with scripts written in other languages like Python.
 
-While when we execute
-we mean to run a separate process with its own environment.
+### shell execution
+
+While when we directly execute with the shell, we run a separate process with its own environment.
+
+-------------------------------------------------------------
 
 As example, the following call a python interpreter:
 

@@ -1,19 +1,16 @@
 # Dynamic library dependencies
 
-A dynamic library, also known as a shared library, is a file that contains compiled code and 
-data that can be used by multiple programs at the same time. Dynamic libraries are loaded at 
-runtime, which means that they are not linked into a program at compile time like static libraries.
-
-To understand the dynamic library that an executable requires you can run:
+Dynamic libraries are loaded at runtime, which means that they are not linked into a program at 
+compile time like static libraries. To understand the dynamic library that an executable requires 
+you can run:
 
 ```sh
 ldd </path/to/the/executable>
 ```
 
-Which will print all shared object dependencies. Dynamic libraries are often used to provide common functionality 
-that is needed by multiple programs, such as system functions, graphical user interface (GUI) libraries, and database
-connectivity libraries. In Unix like system, dynamic libraries have the file extension .so (shared object), while in 
-Windows they have the extension .dll (dynamic-link library).
+Which will print all shared object (<b>*.so</b>) dependencies. Dynamic libraries are often used to p
+rovide common functionality that is needed by multiple programs, such as system functions, graphical 
+user interface (GUI) libraries, and database connectivity libraries.
 
 ## Advantages and Limitations of Shared library
 
@@ -28,15 +25,20 @@ Dynamic libraries also have some disadvantages:
 - They can cause runtime errors if the library file is not found or is incompatible with the program.
 - They can be slower to load than static libraries, because they need to be loaded into memory at runtime.
 
-# Check object files
+# Checkout object files (*.o)
 
-To list symbol names in object files, you can use the 
+The compilations steps create an object file where symbols represent the entry point for the underline 
+machine code for the linking phase. Symbols are used by functions, variable and all the rest of the 
+machinery needed to link correclty the object (<b>.o</b>) files.
+
+To list symbol names in object files, you can use the:
 
 ```sh
 nm file.o
 ```
 
 to list function symbol and respective definition of object files.
+
 <!--  Script to show the footer   -->
 <html>
 <script
