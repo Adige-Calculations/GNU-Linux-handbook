@@ -9,22 +9,21 @@ environment has to be used. The following code snippet calls a ```bash``` interp
 ... # bash code
 ```
 
-This code can be either sourced or execuded.
+This code can be either sourced with ```source ./script.sh``` or execuded in shell ```./script.sh```
 
-### source 
+### Sourcing shell script
 
 When we call ```source``` we means that the contents of 
 the file are read and executed in the current shell environment. 
 ```source``` is designed to work with shell scripts (such as those written in bash)
 and not directly with scripts written in other languages like Python.
 
-### shell execution
+### Shell script execution
 
 While when we directly execute with the shell, we run a separate process with its own environment.
 
--------------------------------------------------------------
 
-As example, the following call a python interpreter:
+As an example, the following script call the ```python``` interpreter:
 
 ```sh
 #! /usr/bin/python
@@ -87,7 +86,7 @@ get_name() {
 
 echo "You are $(get_name)"
 ```
-# Cycles
+## Cycles
 
 ```bash
 #!/bin/bash

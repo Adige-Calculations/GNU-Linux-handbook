@@ -13,7 +13,7 @@ mkdir ~/.ssh
 chmod 700 .ssh
 ```
 
-The next command with generate a private and a public key:
+The next command will generate a pair key, namely private (never to be shared) and a public key:
 
 ```sh
 ssh-keygen –y
