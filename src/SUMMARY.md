@@ -29,6 +29,7 @@
 - [HPC (High Performance Computing)](./HPC/HPC.md)
 	- [Environment management](./HPC/environment_management.md)
     - [MPI (Message Passage Interface)](./HPC/MPI.md)
+    - [Slurm scheduler](./HPC/slurm_scheduler.md)
 - [Web](./web/START_CHAPTER.md)
     - [REST-API](./web/rest_API.md)
 - [Licence server](./license_server.md)
