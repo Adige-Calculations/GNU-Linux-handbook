@@ -4,6 +4,7 @@
 - [User management](./user_mangement.md)
 - [Environment management](./envirnoment_management.md)
 - [Directory structure](./directories_struct.md)
+- [Standard streams](./standard_streams.md)
 - [Shell scripting](./shell_scripting.md)
 - [File system management](./file_system/file_system.md)
     - [Disk management](./file_system/disk_management.md)
@@ -40,7 +41,7 @@
     - [Automating compilation](./utilities/make.md)
     - [Web server](./utilities/web_server.md)
     - [Contenarization](./utilities/docker.md)
-    - [Benchmarking/Debug](./utilities/benchmark.md)
+    - [Benchmarking](./utilities/benchmark.md)
     <!-- - [Database](./utilities/database.md) -->
-- [Usage of menu icons](./menu_icons.md)
+<!-- - [Usage of menu icons](./menu_icons.md) -->
 - [Cross compilation](./cross_compilation.md)

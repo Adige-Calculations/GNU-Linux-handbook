@@ -1,12 +1,14 @@
-# Benchmarking/Debug
+# Benchmark
+
+Few utilities to benchmark progammes:
 
 ## perf
 
-The ```perf``` utility gives an overview on where your progarmme is spedning 
+The ```perf``` utility gives an overview on where your progarmme is spending 
 resources:
 
 ```sh
-perf stat ./<binary>
+perf stat ./my_programme
 ```
 
 <!--  Script to show the footer   -->

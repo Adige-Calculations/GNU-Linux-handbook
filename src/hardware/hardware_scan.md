@@ -6,7 +6,7 @@ Specs of your CPU
 lscpu 
 ```
 
-Return the architecture of the CPU
+Return its architecture:
 
 ```sh
 uname -m 
@@ -40,6 +40,7 @@ Change keyboard layout in Italian
 ```sh
 sudo loadkeys it 
 ```
+
 <!--  Script to show the footer   -->
 <html>
 <script
