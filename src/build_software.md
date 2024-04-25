@@ -18,7 +18,7 @@ Looking at the flags:
 - ```std=c99``` sspecifies the standard
 ```
 
-## Makefile
+### Makefile
 
 A dive in into the ```make``` utility is useful to understand the step to compile a library/program. An example of a ```Makefile``` follows:
 
@@ -45,16 +45,19 @@ There are lots of different makefile solutions but a simple config might look li
 SRCS = main.o mario_game.o sprites.o sfx.o
 OBJS = $(SRCS:.cpp=.o)
 EXE = mario_game
+
 $(EXE): $(OBJS)
     $(CC) $(CFLAGS) -o $(EXE) $(OBJS)
+
 .cpp.o:
     $(CC) $(CFLAGS) -c $< -o $@
 ```
 
-### .PHONY
+## Overcoming Make weirdness
 
-The .PHONY target is a special target that is used to specify a list of phony targets.
-Phony targets are targets that do not represent actual files, but rather represent an action or command that needs to be executed.
+The .PHONY target is a special target that is used to specify a list of counterfait targets.
+Phony targets do not represent actual files, but rather represent an action or command that 
+needs to be executed regardless.
 
 ```makefile
 .PHONY: clean
@@ -64,6 +67,27 @@ clean:
 ```
 
 On the above example, ```clean``` is declared a phony target, and it will be always executed regardless if a file name ```clean``` exist.
+
+
+## Running multiple commands at once
+
+What if we want to run the tests, and if they pass, then deploy our code? 
+You can combine commands in long chains. If one fails, the rest of them 
+going to be skipped.
+
+```sh
+make test deploy
+```
+
+## Making Make less verbose
+
+When you don't want a command to be printed, and just want Make to execute it, prepend it with @ :
+
+```sh
+hello:
+ @echo “Hi, Bob!”
+```
+
 
 <!--  Script to show the footer   -->
 <html>
