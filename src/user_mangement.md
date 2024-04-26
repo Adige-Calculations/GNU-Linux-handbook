@@ -1,11 +1,15 @@
-# Users management
+# User management
 
-At first the users must be known in a system, you can check the users listing the content of ```/etc/passwd```:
+To check the users listing read the content of ```/etc/passwd``` file:
 
 ```sh
 getent passwd | awk -F: '{ print $1}'
 ```
-User accounts are used not only for actual, human users, but also to run system services and sometimes as owners of system files. This is done because the separation between human users' resources (processes, files, etc.) and the separation between system services' resources requires the same mechanisms under the hood.
+
+User accounts are used not only for actual, human users, but also to run system 
+services and sometimes as owners of system files. This is done because the separation 
+between human users' resources (processes, files, etc.) and the separation between 
+system services' resources requires the same mechanisms under the hood.
 
 ## Add a user
 
@@ -15,13 +19,15 @@ To add a user to the system execute the following command:
 sudo adduser <username> 
 ```
 
-To give new user administrator privileges:
+To give administrator privileges:
 
 ``` sh
 sudo adduser <username> sudo    ## in debian based systems
 sudo adduser <username> wheel   ## in RHEL based system
 ```
-and then to elude the need to introduce the password each time you need to use super-user privileges, the command ```sudo visudo``` you can see and edit, the sudo configuration:
+
+then to elude the need to insert the password each time you need to use super-user 
+privileges, excute the command ```sudo visudo``` and change its configuration file:
 
 ```sh
 ...
@@ -48,9 +54,39 @@ yourUsername ALL=(All) NOPASSWD:ALL
 ## Users system login
 
 Show who is logged into the machine and what they are doing
+
 ```sh
 w
 ``` 
+
+## User ownership specification
+
+```sh
+chown -R admin /opt/script
+```
+
+# Groups
+
+To check how many groups are present:
+
+```sh
+groups
+```
+
+## Group management 
+
+To add a user into one the above groups, execute:
+
+```sh
+sudo usermod -a -G <groupName> <username>
+```
+
+While to change the ownership of files/directories:
+
+```sh
+chgrp -R <groupName> <fileOrDirectory>
+```
+
 <!--  Script to show the footer   -->
 <html>
 <script

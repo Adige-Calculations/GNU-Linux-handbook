@@ -11,12 +11,16 @@ the following websites.
 - BLAS: http://www.netlib.org/blas/
 - LAPACK: http://www.netlib.org/lapack/
 
-At the writing time:
+Locate BLAS Library
 
-```sh
-# BLAS source code location
-wget http://www.netlib.org/blas/blas-3.11.0.tgz                   
-```
+## Check installation 
+
+The first step is to determine where is the BLAS library on your system. Use 
+the command ```locate libblas.so``` to find the library. If several results 
+are reported, look for the version usually under ```/usr/lib/``` or 
+```/usr/lib64``` or something similar to that path. For example, on my machine
+the library is located at /usr/lib/libblas.so. That location is most likely a
+symbolic link to another location in your filesystem. 
 
 ## Compile BLAS library and manage the output
  
@@ -25,39 +29,27 @@ Switch to the BLAS folder and execute:
 ```sh
 make
 ```
+
 to compile all fortran files. After that rename the created library.
 
 ```sh
 mv blas_LINUX.a libblas.a
 ```
+
 After creating the library called ```libblas.a```, copy that file to your library folder
 by executing the following command
 
 ```sh
 sudo cp libblas.a /usr/local/lib/
 ```
+
 The above directory can be replaced by any library path in your systems.
+BLAS and LAPACK are then installed on your system.
 
-## Compile LAPACK library and manage the output
-
-Then switch to the LAPACK directory and adjust the file “make.inc” if necessary.
-After setting all parameters correctly, type the command
-
-```sh
-make
-```
-Now, you created a library e.g. called “lapack_MACOS.a”. Copy that file to your library folder 
-by executing
-
-```sh
-sudo cp liblapack.a /usr/local/lib/
-```
-
-BLAS and LAPACK are installed on your system.
-
-> When using C++, do not forget to point out your search directory for header files with 
-option “-I”, and add your library path with “-L” for libraries with “-l” if the search paths
-for the header files and libraries are not included.
+> When dealing with C/C++ compilation, do not forget to point out your search
+> directory for header files with option “-I”, and add your library path with 
+> “-L” for libraries with “-l” if the search paths for the header files and 
+> libraries are not included.
 
 <!--  Script to show the footer   -->
 <html>

@@ -1,13 +1,13 @@
 # Package
 
-<b>A package is a collection of files.</b> Then, a package manager takes care of its installation, with a 
+<b> A package is a collection of files.</b> Then, a package manager takes care of its installation, with a 
 well defined set of rules to place the files into the correct place within the system.
 
-# Package manager
+## Package manager
 
 To understand the specific files and changes made by the ```apt``` package manager, you 
 can use the ```dpkg``` command (debian packages only), which is the underlying package 
-management tool that APT utilizes. The ```dpkg``` command allows you to query information 
+management tool that ```apt```  utilizes. The ```dpkg``` command allows you to query information 
 about installed packages, including their files, configuration details, and more.
 
 ```sh
