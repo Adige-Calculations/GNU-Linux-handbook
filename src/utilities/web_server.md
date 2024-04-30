@@ -101,6 +101,7 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 }
+
 server {
     if ($host = fc.adigecalculations.com) {
         return 301 https://$host$request_uri;

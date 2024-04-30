@@ -2,7 +2,7 @@
 
 ```make``` is a build system, designed to automate tasks. It reads a ```Makefile``` which is structured as follows, remember that indentation matter. A ```Makefile``` follows this pattern: 
 
-```makefile
+```sh
 final_executable: main.c
 	$(CC) main.c -o final_executable -Wall -Wextra -pedantic -std=c99
 ```

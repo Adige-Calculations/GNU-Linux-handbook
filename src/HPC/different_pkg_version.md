@@ -38,6 +38,41 @@ gcc --version
 > default version of that package.
 
 
+## Multiple users, same packages 
+
+For users to be able to use shared packages provided by the system administrators and to create/
+install their own packages with ```spack``` , one of the ways is to create a chained spack
+installation. To do that, individual users will need to install a private copy of spack in 
+their home directory and connect it with the shared (“upstream”).
+
+#### Install local copy of spack
+ 
+Log on to the cluster as normal user and clone the repository: and load the local environment:
+
+```sh
+git clone https://github.com/spack/spack.git
+source spack/share/spack/setup-env.sh
+``` 
+
+#### Chain to a share spack instance
+
+Note the location of the shared install (make sure the directory is readable by users):
+
+```sh
+SPACK_SHARED_DIR=/home/master_spackuser/spack
+```
+
+Create file ```touch ~/spack/etc/spack/upstreams.yaml``` with following contents:
+
+```sh
+upstreams:
+  spack-shared:
+    install_tree: $SPACK_SHARED_DIR/opt/spack
+```
+
+The chained spack is now ready to use. You can check that all upstream compilers and 
+packages are available:
+
 <!--  Script to show the footer   -->
 <html>
 <script
