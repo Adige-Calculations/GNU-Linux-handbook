@@ -6,13 +6,7 @@ in SPMD (single program, multiple data) style.
 MPI offers both point-to-point message passing and group communication
 operations (broadcast, scatter/gather, etc).
 
-Several implementations of MPI are available, both for networks of
-Unix workstations and for supercomputers with specialized communication
-networks.
-
-Applications can be written in C, C++ or Fortran and appropriate 
-calls to MPI can be added where required. Different implementation of the MPI protocol are 
-avaiable (OpenMPI, MPICH, InteMPI, etc...).
+Several implementations of MPI are available (OpenMPI, MPICH, InteMPI, etc...).
 
 ### Compilation:
 
@@ -38,7 +32,7 @@ Regular applications
 MPI applications (running with 16 processes):
 
 ```sh
- mpiexec –n 16 ./test
+mpiexec –n 16 ./test
 ```
 
 ## System setup
